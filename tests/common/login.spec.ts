@@ -18,6 +18,7 @@ test.describe('Login Tests',  () => {
         await loginPage.login('standard_user', 'secret_sauce');
     
         // Verify that user is logged in successfully
+        //เป็นการตรวจสอบว่า URL ของหน้าปัจจุบันไม่ใช่ 'https://www.saucedemo.com/'
         await expect(page).not.toHaveURL('https://www.saucedemo.com/');
       });
 
