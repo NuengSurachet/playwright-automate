@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+import { defineConfig, devices } from "@playwright/test";
 
 /**
  * Read environment variables from file.
@@ -10,7 +10,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests',
+  testDir: "./tests",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -20,8 +20,8 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-   reporter: 'html',
-   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
+  reporter: "html",
+  /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   // reporter: [
   //   ['html', { open: 'never' }],
   //   ['json', { outputFile: 'reports/result/test-results.json' }]
@@ -31,48 +31,45 @@ export default defineConfig({
     /* Base URL to use in actions like `await page.goto('/')`. */
     // baseURL: 'http://127.0.0.1:3000',
 
-
-
+    headless: true,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
-     /* Take screenshots only on failure */
+    trace: "on-first-retry",
+    /* Take screenshots only on failure */
     //  screenshot:  'only-on-failure',
 
- /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-  //  trace: 'on',
+    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
+    //  trace: 'on',
 
     /* Take screenshots always */
-    screenshot: 'on',
+    screenshot: "on",
 
     /* Record video always */
-    video: 'on',
+    video: "on",
 
-
-
-      /* Set the default viewport size */
-    viewport: { width: 1280, height: 720 },
-
-    launchOptions:{
-      slowMo:1000  //ช้าลง
-    }
+    /* Set the default viewport size */
+    viewport: { width: 1920, height: 1080 },
+    ignoreHTTPSErrors: true,
+    launchOptions: {
+      slowMo: 1000, //ช้าลง
+    },
   },
 
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "chromium",
+      use: { ...devices["Desktop Chrome"] },
     },
 
     {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
     },
 
     {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      name: "webkit",
+      use: { ...devices["Desktop Safari"] },
     },
 
     /* Test against mobile viewports. */
