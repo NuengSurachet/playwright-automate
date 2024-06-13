@@ -51,11 +51,13 @@ export default defineConfig({
 
 
       /* Set the default viewport size */
-    viewport: { width: 1280, height: 720 },
+    // viewport: { width: 1280, height: 720 },
 
-    launchOptions:{
-      slowMo:1000  //ช้าลง
-    }
+     launchOptions:{
+      slowMo:2000  //ช้าลง
+     }
+
+   
   },
 
   /* Configure projects for major browsers */
@@ -63,17 +65,19 @@ export default defineConfig({
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
-    },
+    }
+     ,
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+     {
+       name: 'firefox',
+     use: { ...devices['Desktop Firefox'] },
+     }
+    //  ,
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    //  {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
