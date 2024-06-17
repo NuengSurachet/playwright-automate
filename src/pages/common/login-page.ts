@@ -22,20 +22,20 @@ export class LoginPage {
   // สร้างเมทอด login() เพื่อทำการ login ด้วยชื่อผู้ใช้และรหัสผ่านที่รับเข้ามาเป็นพารามิเตอร์
   async login(username: string, password: string): Promise<void> {
     // ใช้ fill() เพื่อกรอกชื่อผู้ใช้และรหัสผ่านใน input fields และ click() เพื่อกดปุ่มเข้าสู่ระบบ
-    await this.page.fill(this.usernameInput, username);
+    await this.page.fill(this.usernameInput, username,{ force: true });
     debugger
-    await this.page.fill(this.passwordInput, password.toString());
+    await this.page.fill(this.passwordInput, password.toString(),{ force: true });
    // await this.page.click(this.loginButton);
-    await this.page.getByRole('button', { name: 'Login' }).click();
+    await this.page.getByRole('button', { name: 'Login' }).click({ force: true });
    
     try {
-      await this.page.locator(".thumbnail").first().click();
-      await this.page.locator(".caption-overflow > span").click();
+      await this.page.locator(".thumbnail").first().click({ force: true });
+      await this.page.locator(".caption-overflow > span").click({ force: true });
       await this.page.waitForLoadState();
     } catch (error) {
       await this.page.waitForSelector(".thumbnail");
-      await this.page.locator(".thumbnail").first().click();
-      await this.page.locator(".caption-overflow > span").click();
+      await this.page.locator(".thumbnail").first().click({ force: true });
+      await this.page.locator(".caption-overflow > span").click({ force: true });
       await this.page.waitForLoadState();
     }
   }
