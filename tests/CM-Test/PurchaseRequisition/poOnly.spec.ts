@@ -10,7 +10,7 @@ test.describe("Login CM Tests", async () => {
     // const icon = page.locator('//i[@class="glyphicon glyphicon-log-in"]')
     // await icon.hover();
     // await icon.click();
-    test.setTimeout(10000);
+    test.setTimeout(50000);
     // await page.setViewportSize({ width: 1920, height: 1080 });
     // await page.evaluate(() => {
     //   window.moveTo(0, 0);
@@ -82,7 +82,7 @@ test.describe("Login CM Tests", async () => {
     await page
       .getByRole("link", { name: "ระบบสั่งซื้อ" })
       .click({ force: true });
-    await page.waitForTimeout(3000);
+    await page.waitForLoadState("load");
     await page.locator('button:has-text("New PO")').click();
     await page.locator("#openpo_prdetail__").click();
     await page.getByText('Select', { exact: true }).click();
@@ -116,8 +116,13 @@ test.describe("Login CM Tests", async () => {
 
     await selectOption2.selectOption("ICON003");
     await page.locator('//button[@id="savee"]').click();
-      
-    await page.getByRole("button", { name: " Save" }).click();
+        await page.getByRole('button', { name: 'Print ' }).click();
+    const page1Promise = page.waitForEvent('popup');
+    await page.locator('a:has-text("Print")').click();
+    const page1 = await page1Promise;
+    await page.waitForLoadState("load");
+    // await page.getByRole("button", { name: " Save" }).click();
+
     await page.locator("#discountHshow").click();
     await page.locator("#discountHshow").fill("10.00");
     await page.locator("#downpershow").fill("10.00");
@@ -126,21 +131,42 @@ test.describe("Login CM Tests", async () => {
       .filter({ hasText: "Purchase Order Attachment" })
       .nth(3)
       .click();
-    await page.getByRole('button', { name: 'Print ' }).click();
-    const page1Promise = page.waitForEvent('popup');
-    await page.locator('a:has-text("Print")').click();
-    const page1 = await page1Promise;
+
     await page.locator('//i[@class="icon icon-bell2"]').click();
-    // await page.locator("#userapprove97").click();
     await page.locator('(//img[@class="img-circle img-sm"])[1]').click();
     await page.waitForSelector("div.modal-dialog.modal-full");
     await page.click("div.modal-dialog.modal-full .btn.bg-success-600");
-    
+
+    // PO -> Advance Depositawait page.getByRole('button', { name: 'OK' }).click();
+    await page.getByRole('link', { name: ' Advance Deposit Archive' }).click();
+    await page.getByRole('link', { name: ' Approve Advance Deposit' }).click();
+    await page.getByRole('link', { name: ' Advance Deposit Archive' }).click();
+    await page.getByRole('row', { name: 'asdasd asd 2  select' }).getByRole('link').click();
+    await page.getByText('Load Document').click();
+    await page.getByRole('link', { name: ' Advance Deposit', exact: true }).click();
+    await page.getByText('Select', { exact: true }).click();
+    await page.locator('#sePO24060007').click();
+    await page.locator('#invoice_number').click();
+    await page.locator('#invoice_number').fill('5678');
+    await page.locator('#remark').click();
+    await page.locator('#remark').fill('remark pooonly');
+    await page.locator('#sendapprove').selectOption('93');
+    await page.getByText('Save').click();
+    await page.getByRole('button', { name: 'OK' }).click();
+    const page2Promise = page.waitForEvent('popup');
+    await page.getByRole('link', { name: ' Print' }).click();
+    const page2 = await page2Promise;
+    await page.getByText('Send Approve').click();
+    await page.getByRole('button', { name: 'OK' }).click();
+    await page.locator('//i[@class="icon icon-bell2"]').click();
+    await page.locator('(//img[@class="img-circle img-sm"])[1]').click();
+    // await page.locator('#foo126AD24060007').click(); REMARK
+    // await page.locator('#foo126AD24060007').fill('ohm test poonly');
+    await page.click("div.modal-dialog.modal-full .btn.bg-success-600");
+    await page.getByRole('button', { name: 'OK' }).click();
+
     //ระบบวัสดุ
-    // await page
-    //   .getByRole("link", { name: "ระบบวัสดุ" })
-    //   .click({ force: true });
-    // await page.waitForTimeout(3000);
+    
   })
 });
 // const page3Promise = page.waitForEvent('popup');
