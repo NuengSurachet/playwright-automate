@@ -1,0 +1,14 @@
+{
+    "AddNewCompany":[{
+                    "ss":""
+    }],
+    "UpdateCompany":[{
+                         "s":""
+                     }],
+    "SetupProjectDepartment":[{
+            "groupName":"icon003",
+            "remark":"Test IOT",
+            "department":"DEP001",
+            "user":"icon003"
+    }]
+}
