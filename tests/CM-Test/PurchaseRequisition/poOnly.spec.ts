@@ -1,5 +1,9 @@
 import { chromium, expect, selectors, test } from "@playwright/test";
 import { LoginPage } from "../../../src/pages/common/login-page";
+import dataSetting from "../../../data/common/TestSetting.json";
+
+const data = dataSetting.Login;
+
 
 test.describe("Login CM Tests", async () => {
   test("Successful login with valid credentials", async ({ page }) => {
@@ -17,7 +21,7 @@ test.describe("Login CM Tests", async () => {
     //   window.resizeTo(screen.width, screen.height);
     // });await page.goto(
     await page.goto(
-      "https://std-cm-test.iconcm.com/auth/login/icon003/ICON/"
+      data.username+ "auth/login"+data.username+"/ICON/"
     );
     // await page
     //   .getByRole("link", { name: "ระบบจัดการในสำนักงาน" })
