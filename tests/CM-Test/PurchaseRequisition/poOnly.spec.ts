@@ -135,12 +135,13 @@ test.describe("Login CM Tests", async () => {
     await page.locator('(//img[@class="img-circle img-sm"])[1]').click();
     await page.waitForSelector("div.modal-dialog.modal-full");
     await page.click("div.modal-dialog.modal-full .btn.bg-success-600");
-
+    
     //ระบบวัสดุ
     // await page
     //   .getByRole("link", { name: "ระบบวัสดุ" })
     //   .click({ force: true });
     // await page.waitForTimeout(3000);
+  })
 });
 // const page3Promise = page.waitForEvent('popup');
 // await page.locator('#print_form_poPO24060019').click();
