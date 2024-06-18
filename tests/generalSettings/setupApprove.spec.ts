@@ -1,11 +1,12 @@
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "../../src/pages/common/login-page"
 import dataSetting from "../../data/common/TestSetting.json"
-import dataGeneral from "../../data/generalSettings/generalSettings.json"
-const data = dataSetting.Login;
-  const setGroupData = dataGeneral.SetupProjectDepartment[0];
+import SetupApprove from "../../data/generalSettings/setupApprove.js";
 
-test.describe("Setup Project & department", () => {
+const data = dataSetting.Login;
+const setGroupData = SetupApprove[0]
+
+test.describe("Setup Approve", () => {
   let page;
   let currentUrl = "";
   test.beforeAll(async ({ browser }) => {
