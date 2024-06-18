@@ -1,6 +1,6 @@
 import { chromium, expect, selectors, test } from "@playwright/test";
-import { LoginPage } from "../../../src/pages/common/login-page";
-import dataSetting from "../../../data/common/TestSetting.json";
+import { LoginPage } from "../../src/pages/common/login-page";
+import dataSetting from "../../data/common/TestSetting.json";
 
 const data = dataSetting.Login;
 
