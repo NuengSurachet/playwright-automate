@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
-import { LoginPage } from "../../../src/pages/common/login-page";
+import { LoginPage } from "../../src/pages/common/login-page";
 import { describe } from "node:test";
-import dataSetting from "../../../data/common/TestSetting.json";
+import dataSetting from "../../data/common/TestSetting.json";
 
 const data = dataSetting.Login;
 
