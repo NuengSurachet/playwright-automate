@@ -1,13 +1,6 @@
 import { test, expect, chromium } from "@playwright/test";
-import { LoginPage } from "../../src/pages/common/login-page";
+import {LoginPage}  from "../../src/pages/common/login-page";
 import dataSetting from "../../data/common/TestSetting.json";
-//import dataCompanys from "/data/generalSettings/generalSettings.json"
-import dataCompanys from "../../data/common/TestSetting.json";
-import { LoginPage } from "../../src/pages/common/login-page"
-import dataSetting from "../../data/common/TestSetting.json"
-
-
-
 
 test.describe("Setup Company", () => {
       const data=dataSetting.Login;
