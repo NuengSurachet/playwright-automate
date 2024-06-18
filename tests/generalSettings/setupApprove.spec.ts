@@ -1,10 +1,10 @@
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "../../src/pages/common/login-page"
 import dataSetting from "../../data/common/TestSetting.json"
-import SetupApprove from "../../data/generalSettings/SetupApprove.json";
+import SetupApprove from "../../data/generalSettings/setupApprove.js";
 
 const data = dataSetting.Login;
-const setGroupData = SetupApprove.SetupApprove[0]
+const setGroupData = SetupApprove[0]
 
 test.describe("Setup Project & department", () => {
   let page;
