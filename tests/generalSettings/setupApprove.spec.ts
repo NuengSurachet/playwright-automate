@@ -6,7 +6,7 @@ import SetupApprove from "../../data/generalSettings/setupApprove.js";
 const data = dataSetting.Login;
 const setGroupData = SetupApprove[0]
 
-test.describe("Setup Project & department", () => {
+test.describe("Setup Approve", () => {
   let page;
   let currentUrl = "";
   test.beforeAll(async ({ browser }) => {
