@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { LoginPage } from "../../../src/pages/common/login-page";
+import { LoginPage } from "../../src/pages/common/login-page";
 import { describe } from "node:test";
 
 const deleteRow = async (page) => {
