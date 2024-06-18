@@ -95,48 +95,6 @@ describe("ระบบจัดการในสำนักงาน", () => {
       )
       .click();
 
-    //------
-    // await page.locator("a").filter({ hasText: "Reject" }).click();
-    // await page.getByPlaceholder("หมายเหตุ").click();
-    // await page.getByPlaceholder("หมายเหตุ").fill("ลบ test");
-    // await page.locator('a:has-text("reject")').click();
-    // await page.locator("#rejectpr_approvePR24060091").click();
-    // await page.getByText("Load Document", { exact: true }).click();
-    // await page.locator(".icons-list > li:nth-child(5) > a").first().click();
-    // await page.getByPlaceholder("หมายเหตุ").click();
-    // await page.getByPlaceholder("หมายเหตุ").fill("ลบเทส");
-    // await page.getByRole("button", { name: " Confirm For Delete" }).click();
-    // await page.getByText("Load Document", { exact: true }).click();
 
-    // test("approve pr", async ({ page }) => {
-    //   await page.goto(
-    //     "https://maison-cm-test.iconframework.com/auth/login/icon001/PPA"
-    //   );
-    //   await page
-    //     .getByRole("link", { name: "ระบบจัดการในสำนักงาน" })
-    //     .click({ force: true });
-    //   await page.getByRole("link", { name: " Approve", exact: true }).click();
-    //   await page.locator(`(//span[@class='label bg-success'])[1]`).click();
-    //   await page.getByRole("button", { name: "OK" }).click();
-    //   await page.getByRole("link", { name: " PR Archive" }).click();
-    //   await page.locator("#txtdatestart").first().fill("2024-06-14");
-    //   await page.locator("#txtdateend").first().fill("2024-06-14");
-    //   await page.getByPlaceholder("Select Document PR").click();
-    //   await page.getByRole("treeitem", { name: "Expense" }).click();
-    //   await page.getByPlaceholder("Select Document Status...").click();
-    //   await page.getByRole("treeitem", { name: "Approve" }).click();
-    //   await page.getByText("Load Document", { exact: true }).click();
-    //   await page.getByRole("button", { name: "Print " }).click();
-    //   const page1Promise = page.waitForEvent("popup");
-    //   await page
-    //     .locator(
-    //       `//div[@class='btn-group dropup open']//ul[@class='dropdown-menu dropdown-menu-right']`
-    //     )
-    //     .click();
-    //   const page1 = await page1Promise;
-    //   await page.getByRole("button", { name: "Print " }).click();
-
-    //   //--------
-    // });
   });
 });
