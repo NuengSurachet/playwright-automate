@@ -8,7 +8,6 @@ test.describe("Setup Permission", () => {
     test.setTimeout(600000);
     await page.pause();
 
-    await page.pause();
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
     await loginPage.login(data.username, data.password);

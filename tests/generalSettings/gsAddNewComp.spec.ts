@@ -3,44 +3,50 @@ import { LoginPage } from "../../src/pages/common/login-page";
 import dataSetting from "../../data/common/TestSetting.json";
 //import dataCompanys from "/data/generalSettings/generalSettings.json"
 import dataCompanys from "../../data/common/TestSetting.json";
+import { LoginPage } from "../../src/pages/common/login-page"
+import dataSetting from "../../data/common/TestSetting.json"
+
+
+
 
 test.describe("Setup Company", () => {
-  const data = dataSetting.Login;
-  const compData = dataCompanys;
-  test("Add new company", async () => {
-    test.setTimeout(600000);
-    const browser = await chromium.launch();
-    const context = await browser.newContext();
-    const page = await context.newPage();
-    await page.pause();
-    const loginPage = new LoginPage(page);
-    await loginPage.goto(data.site);
-    await loginPage.login(data.username, data.password);
-    // await expect(page).not.toHaveURL(excelData[0].site + "/auth/index");
-    // try {
-    //   await page.locator(".thumbnail").first().click();
-    //   await page.locator(".caption-overflow > span").click();
-    //   await page.waitForLoadState();
-    // } catch (error) {
-    //   await page.waitForSelector(".thumbnail");
-    //   await page.locator(".thumbnail").first().click();
-    //   await page.locator(".caption-overflow > span").click();
-    //   await page.waitForLoadState();
-    // }
+      const data=dataSetting.Login;
+    
+      test("Add new company", async () => {
+        test.setTimeout(600000);
+        const browser = await chromium.launch();
+        const context = await browser.newContext();
+        const page = await context.newPage();
+        await page.pause();
+        const loginPage = new LoginPage(page);
+        await loginPage.goto(data.site);
+        await loginPage.login(data.username, data.password);
+        // await expect(page).not.toHaveURL(excelData[0].site + "/auth/index");
+        // try {
+        //   await page.locator(".thumbnail").first().click();
+        //   await page.locator(".caption-overflow > span").click();
+        //   await page.waitForLoadState();
+        // } catch (error) {
+        //   await page.waitForSelector(".thumbnail");
+        //   await page.locator(".thumbnail").first().click();
+        //   await page.locator(".caption-overflow > span").click();
+        //   await page.waitForLoadState();
+        // }
 
-    if (!page.isClosed()) {
-      await page
-        .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
-        .click({ timeout: 50000 });
-    }
-    if (!page.isClosed()) {
-      await page.locator("#btn_mg").click({ force: true });
-    }
-    await page.locator("a").filter({ hasText: "New" }).click({ force: true });
-    await page.locator('input[name="maincode"]').click({ force: true });
-    await page.locator("#maincode").fill("TestIOT", { force: true });
-    await page.waitForSelector("#taxnova");
-    await page.locator("#taxnova").fill("12345", { force: true });
+        if (!page.isClosed()) {
+          await page
+            .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
+            .click({ timeout: 50000 });
+        }
+        if (!page.isClosed()) {
+          await page.locator("#btn_mg").click({ force: true });
+        }
+        await page.locator("a").filter({ hasText: "New" }).click( { force: true });
+        await page.locator('input[name="maincode"]').click( { force: true });
+        await page.locator("#maincode").fill("TestIOT", { force: true });
+        await page.waitForSelector("#taxnova");
+        await page.locator("#taxnova").fill("12345", { force: true });
+
 
     if (!page.isClosed()) {
       await page.waitForSelector("#name");
