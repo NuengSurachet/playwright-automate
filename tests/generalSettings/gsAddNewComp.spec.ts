@@ -1,23 +1,22 @@
 import { test, expect, chromium } from "@playwright/test";
 import { LoginPage } from "../../src/pages/common/login-page"
-import { readExcelFile } from "../../src/utils/read-excel";
-import { GetprojectRoot } from "../../src/utils/get-current-dir";
+import dataSetting from "../../data/common/TestSetting.json"
+import dataCompanys from "../../data/generalSettings/generalSettings.json"
+
 
 
 test.describe("Setup Company", () => {
-  const rootPath = GetprojectRoot();
-  const excelData = readExcelFile(rootPath + "/data/cm/TestSetting.xlsx");
-  console.log(excelData);
-
+      const data=dataSetting.Login;
+      const compData =dataCompanys;
       test("Add new company", async () => {
         test.setTimeout(600000);
         const browser = await chromium.launch();
         const context = await browser.newContext();
-      const page = await context.newPage();
-      await page.pause();
+        const page = await context.newPage();
+        await page.pause();
         const loginPage = new LoginPage(page);
-        await loginPage.goto(excelData[0].site);
-        await loginPage.login(excelData[0].user, excelData[0].pass);
+        await loginPage.goto(data.site);
+        await loginPage.login(data.username, data.password);
         // await expect(page).not.toHaveURL(excelData[0].site + "/auth/index");
         // try {
         //   await page.locator(".thumbnail").first().click();
@@ -83,7 +82,7 @@ test.describe("Setup Company", () => {
         await page.getByRole("button", { name: " Save" }).click({ force: true });
         await page.getByRole("button", { name: "OK" }).click({ force: true });
         // ติด กรอก sap company code
-        await page.locator("a").filter({ hasText: excelData[0].user }).click({ force: true });
+        await page.locator("a").filter({ hasText: data.username }).click({ force: true });
         await page.getByRole("link", { name: "Logout" }).click({ force: true });
       });
 
@@ -94,8 +93,8 @@ test.describe("Setup Company", () => {
      const page = await context.newPage();
      await page.pause();
        const loginPage = new LoginPage(page);
-       await loginPage.goto(excelData[0].site);
-       await loginPage.login(excelData[0].user, excelData[0].pass);
+       await loginPage.goto(data.site);
+       await loginPage.login(data.username, data.password);
        await page.waitForLoadState();
        await page.getByRole('link', { name: 'ระบบจัดการข้อมูลกลาง' }).click({ force: true });
        await page.locator('a').filter({ hasText: 'Genaral Settings' }).click({ force: true });

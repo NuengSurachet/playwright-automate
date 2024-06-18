@@ -1,12 +1,16 @@
 import { test, expect } from "@playwright/test";
+import dataSetting from "../../../data/common/TestSetting.json";
+
+const data = dataSetting.Login;
+
 
 const gotoMenu = async (page) => {
   // ไปยัง URL ที่ต้องการ
-  await page.goto("https://maison-cm-test.iconframework.com/auth/index");
+  await page.goto(data.site+"auth/index");
 
   await page.getByPlaceholder("Username").click();
-  await page.getByPlaceholder("Username").fill("icon001");
-  await page.getByPlaceholder("Password").fill("123456");
+  await page.getByPlaceholder("Username").fill(data.username);
+  await page.getByPlaceholder("Password").fill(data.password);
   await page.getByRole("button", { name: "Login" }).click();
 
   await page.waitForSelector(".thumbnail");
@@ -21,7 +25,7 @@ const gotoMenu = async (page) => {
 test("test", async ({ page }) => {
   // await gotoMenu(page);
   await page.goto(
-    "https://maison-cm-test.iconframework.com/auth/login/icon001/PPA"
+    data.site+"auth/login/"+data.username+"/PPA"
   );
 
   await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();

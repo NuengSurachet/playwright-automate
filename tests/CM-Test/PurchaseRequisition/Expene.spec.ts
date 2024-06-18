@@ -1,6 +1,9 @@
 import { test, expect } from "@playwright/test";
 import { LoginPage } from "../../../src/pages/common/login-page";
 import { describe } from "node:test";
+import dataSetting from "../../../data/common/TestSetting.json";
+
+const data = dataSetting.Login;
 
 const deleteRow = async (page) => {
   await page.locator("#delete110300001MM1").click();
@@ -8,6 +11,7 @@ const deleteRow = async (page) => {
 };
 
 describe("ระบบจัดการในสำนักงาน", () => {
+  
   test("New PR", async ({ page }) => {
     // await page.setViewportSize({ width: 1920, height: 1080 });
     // await page.evaluate(() => {
@@ -16,7 +20,10 @@ describe("ระบบจัดการในสำนักงาน", () => {
     // });
 
     test.setTimeout(600000);
-    await page.goto("https://std-cm-test.iconcm.com/auth/login/icon001/ICON//");
+    await page.goto(
+      data.site+"/auth/login/"+data.username+"/PPA"
+    );
+    
     await page
       .getByRole("link", { name: "ระบบจัดการในสำนักงาน" })
       .click({ force: true });
