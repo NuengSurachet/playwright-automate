@@ -1,6 +1,6 @@
 const setupPermissionReport =
 {
-    groupName: "A Test",   //ค้นหาชื่อฟิวส์: *  (ห้ามซ้ำ) 
+    groupName: "A Test",   //ใส่ชื่อ ที่ต้องการค้นหา
 
 }
 
