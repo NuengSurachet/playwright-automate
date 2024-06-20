@@ -1,6 +1,8 @@
+
+
 {
     "Login":{
-            "site":"https://maison-cm-test.iconframework.com/",
+            "site":"https://std-cm-test.iconcm.com/auth/index",
             "username":"icon001",   
             "password":"123456"   
             }

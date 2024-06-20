@@ -1,0 +1,465 @@
+import { test, expect } from "@playwright/test";
+import { LoginPage } from "../../src/pages/common/login-page";
+import dataSetting from "../../data/common/TestSetting.json";
+import { setupProjectType } from "../../data/generalSettings/setupProjectType";
+import { SetupDocumentNumbering } from "../../data/generalSettings/SetupDocumentNumbering";
+const data = dataSetting.Login;
+
+test("Setup Document Numbering", async ({ page }) => {
+  //fullScreenMode(page);
+  test.setTimeout(600000);
+
+  const loginPage = new LoginPage(page);
+  await loginPage.goto(data.site);
+  await loginPage.login(data.username, data.password);
+  await page.goto(data.site + "/auth/login/" + data.username + "/PPA");
+  await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
+  await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
+  await page.getByRole("link", { name: " Setup Document Numbering" }).click();
+  await page.getByRole("link", { name: "Transaction" }).click();
+  await page
+    .getByRole("row", { name: "Subcontractor  OPEN" })
+    .getByRole("link")
+    .click();
+  await page.getByRole("cell", { name: "Setup" }).first().click();
+  await page.getByText("New Series").click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .fill(SetupDocumentNumbering.name);
+
+  await page
+    .getByRole("row", { name: `${SetupDocumentNumbering.name} YYYY/MM Delete` })
+    .locator('input[name="code\\[\\]"]')
+    .fill(SetupDocumentNumbering.Prefix);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .fill(SetupDocumentNumbering.digits);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .fill("10");
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .fill(SetupDocumentNumbering.lastNo);
+  await page
+    .locator(`[name="setup_date[]"]`)
+    .last()
+    .selectOption(SetupDocumentNumbering.startDate);
+  console.log(
+    "SetupDocumentNumbering.startDate.toDateString() :>> ",
+    SetupDocumentNumbering.startDate
+  );
+  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+  await page.getByText("Save").click();
+  await page.getByRole("button", { name: "OK" }).click();
+
+  await page.getByRole("link", { name: " Setup Document Numbering" }).click();
+  await page.getByRole("link", { name: " Setup Document Numbering" }).click();
+  await page.getByRole("link", { name: "Transaction" }).click();
+  await page
+    .getByRole("row", { name: "Subcontractor  OPEN" })
+    .getByRole("link")
+    .click();
+  await page.getByRole("cell", { name: "Setup" }).first().click();
+  await page.getByText("New Series").click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .fill(SetupDocumentNumbering.name);
+
+  await page
+    .getByRole("row", { name: `${SetupDocumentNumbering.name} YYYY/MM Delete` })
+    .locator('input[name="code\\[\\]"]')
+    .fill(SetupDocumentNumbering.Prefix);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .fill(SetupDocumentNumbering.digits);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .fill("10");
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .fill(SetupDocumentNumbering.lastNo);
+  await page
+    .locator(`[name="setup_date[]"]`)
+    .last()
+    .selectOption(SetupDocumentNumbering.startDate);
+  console.log(
+    "SetupDocumentNumbering.startDate.toDateString() :>> ",
+    SetupDocumentNumbering.startDate
+  );
+  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+
+  await page.getByText("New Series").click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .fill(SetupDocumentNumbering.name);
+
+  await page
+    .getByRole("row", { name: `${SetupDocumentNumbering.name} YYYY/MM Delete` })
+    .locator('input[name="code\\[\\]"]')
+    .fill(SetupDocumentNumbering.Prefix);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .fill(SetupDocumentNumbering.digits);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .fill("10");
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .fill(SetupDocumentNumbering.lastNo);
+  await page
+    .locator(`[name="setup_date[]"]`)
+    .last()
+    .selectOption(SetupDocumentNumbering.startDate);
+  console.log(
+    "SetupDocumentNumbering.startDate.toDateString() :>> ",
+    SetupDocumentNumbering.startDate
+  );
+  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+
+  await page.getByText("New Series").click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .fill(SetupDocumentNumbering.name);
+
+  await page
+    .getByRole("row", { name: `${SetupDocumentNumbering.name} YYYY/MM Delete` })
+    .locator('input[name="code\\[\\]"]')
+    .fill(SetupDocumentNumbering.Prefix);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .fill(SetupDocumentNumbering.digits);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .fill("10");
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .fill(SetupDocumentNumbering.lastNo);
+  await page
+    .locator(`[name="setup_date[]"]`)
+    .last()
+    .selectOption(SetupDocumentNumbering.startDate);
+  console.log(
+    "SetupDocumentNumbering.startDate.toDateString() :>> ",
+    SetupDocumentNumbering.startDate
+  );
+  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+
+  await page.getByText("New Series").click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .fill(SetupDocumentNumbering.name);
+
+  await page
+    .getByRole("row", { name: `${SetupDocumentNumbering.name} YYYY/MM Delete` })
+    .locator('input[name="code\\[\\]"]')
+    .fill(SetupDocumentNumbering.Prefix);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .fill(SetupDocumentNumbering.digits);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .fill("10");
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .fill(SetupDocumentNumbering.lastNo);
+  await page
+    .locator(`[name="setup_date[]"]`)
+    .last()
+    .selectOption(SetupDocumentNumbering.startDate);
+  console.log(
+    "SetupDocumentNumbering.startDate.toDateString() :>> ",
+    SetupDocumentNumbering.startDate
+  );
+  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+
+  await page.getByText("New Series").click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .fill(SetupDocumentNumbering.name);
+
+  await page
+    .getByRole("row", { name: `${SetupDocumentNumbering.name} YYYY/MM Delete` })
+    .locator('input[name="code\\[\\]"]')
+    .fill(SetupDocumentNumbering.Prefix);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .fill(SetupDocumentNumbering.digits);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .fill("10");
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .fill(SetupDocumentNumbering.lastNo);
+  await page
+    .locator(`[name="setup_date[]"]`)
+    .last()
+    .selectOption(SetupDocumentNumbering.startDate);
+  console.log(
+    "SetupDocumentNumbering.startDate.toDateString() :>> ",
+    SetupDocumentNumbering.startDate
+  );
+  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+
+  await page.getByText("New Series").click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", { name: "YYYY/MM Delete" })
+    .locator('input[name="docment\\[\\]"]')
+    .fill(SetupDocumentNumbering.name);
+
+  await page
+    .getByRole("row", { name: `${SetupDocumentNumbering.name} YYYY/MM Delete` })
+    .locator('input[name="code\\[\\]"]')
+    .fill(SetupDocumentNumbering.Prefix);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="digits\\[\\]"]')
+    .fill(SetupDocumentNumbering.digits);
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="first\\[\\]"]')
+    .fill("10");
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .click();
+  await page
+    .getByRole("row", {
+      name: `${SetupDocumentNumbering.name} ${SetupDocumentNumbering.Prefix} YYYY/MM Delete`,
+    })
+    .locator('input[name="last\\[\\]"]')
+    .fill(SetupDocumentNumbering.lastNo);
+  await page
+    .locator(`[name="setup_date[]"]`)
+    .last()
+    .selectOption(SetupDocumentNumbering.startDate);
+  console.log(
+    "SetupDocumentNumbering.startDate.toDateString() :>> ",
+    SetupDocumentNumbering.startDate
+  );
+  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+  await page.getByText("Save").click();
+  await page.getByRole("button", { name: "OK" }).click();
+
+  // const idValue = await page
+  //   .locator(`[type="checkbox"][data-readonly]`)
+  //   .nth(39)
+  //   .getAttribute("id");
+  // // await page.locator("#ic_chk609").check();
+  // // แสดงค่า id ที่ได้
+  // console.log("id", idValue);
+  // await page.locator(`#${idValue}`).check();
+});

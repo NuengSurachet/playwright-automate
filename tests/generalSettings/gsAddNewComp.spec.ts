@@ -10,7 +10,7 @@ test.describe("Setup Company", () => {
         const browser = await chromium.launch();
         const context = await browser.newContext();
         const page = await context.newPage();
-        await page.pause();
+        // await page.pause();
         const loginPage = new LoginPage(page);
         await loginPage.goto(data.site);
         await loginPage.login(data.username, data.password);
@@ -97,7 +97,6 @@ test.describe("Setup Company", () => {
     const browser = await chromium.launch();
     const context = await browser.newContext();
     const page = await context.newPage();
-    await page.pause();
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
     await loginPage.login(data.username, data.password);
