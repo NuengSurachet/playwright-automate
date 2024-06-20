@@ -1,4 +1,4 @@
-export const setUpPositionData = {
+export const setupPositionData = {
     modelTypeCode: "ohm01", // Model Type Code : *
     modelTypeName: "ohm01", // Model Type Name : *
     modelTypeNameEN: "ohm01", // Model Type Name (EN) : *

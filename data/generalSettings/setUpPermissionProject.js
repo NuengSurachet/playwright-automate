@@ -1,4 +1,4 @@
-export const setUpPermissionPositionData = {
+export const setupPermissionPositionData = {
     ProjectListName : [ // เพิ่มชื่อโปรเจ็กต์
         "ICON - ERP2",
         "Icon-M - Icon-M",
