@@ -21,7 +21,12 @@ test("setup ProjectType", async ({ page }) => {
   await page.locator("#code").fill(setupProjectType.codee); //js
   await page.locator("#name").fill(setupProjectType.name); //js
   await page.getByRole("button", { name: " Save" }).click();
-  await page.getByRole("button", { name: "OK" }).click();
+  await page.getByRole("button", { name: "OK" }).click();  
+  await page.getByPlaceholder('Type to filter...').fill('nueng');
+  await page.getByPlaceholder('Type to filter...').click();
+  await page.getByPlaceholder('Type to filter...').fill(setupProjectType.name);
+  await page.getByRole('gridcell', { name: '' }).click();
+  await page.getByRole('button', { name: 'History Log' }).click();
   // const idValue = await page
   //   .locator(`[type="checkbox"][data-readonly]`)
   //   .nth(39)

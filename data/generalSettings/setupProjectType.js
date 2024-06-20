@@ -1,4 +1,4 @@
 export const setupProjectType = {
-    codee: "test01",
-    name: "test01",
+    codee: "003", // ใส่ได้แค่3ตัวอักษรเท่านั้น
+    name: "003",
 }

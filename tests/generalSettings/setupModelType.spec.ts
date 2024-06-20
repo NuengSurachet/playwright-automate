@@ -22,11 +22,18 @@ test("Setup Model Type", async ({ page }) => {
   await page.locator("#model_type_code").click();
   await page.locator("#model_type_code").fill(setupModelType.modelTypeCode);
   await page.locator("#model_type_name").fill(setupModelType.modelTypeName);
+  await page.locator("#model_type_name_eng").click();
   await page
     .locator("#model_type_name_eng")
-    .fill(setupModelType.modelTypeNameen);
+    .fill(setupModelType.modelTypeNameEN);
+  await page.locator("#short_name").click();
   await page.locator("#short_name").fill(setupModelType.modelTypeShortName);
-  await page.locator("#project_type").press("Tab");
+  await page
+    .locator(`[id="project_type"]`)
+    .selectOption(setupModelType.ProjectType);
+  await page.waitForTimeout(1500);
+  await page.locator("#save_t").click();
+  await page.getByRole("button", { name: "OK" }).click();
   // const idValue = await page
   //   .locator(`[type="checkbox"][data-readonly]`)
   //   .nth(39)
