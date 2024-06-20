@@ -11,7 +11,8 @@ test.describe("Setup Project Unit", () => {
 
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
-    await loginPage.login(data.username, data.password);
+    await loginPage.loginByUserType("ADMIN")
+    //await loginPage.login(data.username, data.password);
     await page
       .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
       .click({ force: true });

@@ -1,7 +1,22 @@
 {
-    "Login":{
-            "site":"https://std-cm-test.iconcm.com/",
-            "username":"icon002",   
-            "password":"123456"   
-            }
+    "Login": {
+        "site": "https://std-cm-test.iconcm.com/",
+        "username": "icon002",
+        "password": "123456"
+    },
+    "Users": {
+        "ADMIN": {
+            "username": "icon001",
+            "password": "123456"
+        },
+        "DEV": {
+            "username": "icon002",
+            "password": "123456"
+        },
+        "TESTER": {
+            "username": "icon003",
+            "password": "123456"
+        }
+    },
+    "UsersType": ["ADMIN", "DEV", "TESTER"]
 }
