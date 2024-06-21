@@ -1,6 +1,8 @@
- const SetupApprove =
+import { faker } from '@faker-js/faker';
+
+const SetupApprove =
     [{
-            "groupName":"Tester01",   //Group Name : *  (ห้ามซ้ำ) 
+            "groupName":faker.internet.userName(),   //Group Name : *  (ห้ามซ้ำ) 
             "remark":"Test IOT",    //Remark :
             "department":"DEP001",  //Department : *
             "user":"icon002"        //User Name : * Add Row

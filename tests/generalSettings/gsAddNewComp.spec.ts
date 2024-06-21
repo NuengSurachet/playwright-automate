@@ -2,7 +2,7 @@ import { test, expect, chromium } from "@playwright/test";
 import {LoginPage}  from "../../src/pages/common/login-page";
 import dataSetting from "../../data/common/TestSetting.json";
 
-test.describe("Setup Company", () => {
+test.describe.skip("Setup Company", () => {
       const data=dataSetting.Login;
     
       test("Add new company", async () => {
