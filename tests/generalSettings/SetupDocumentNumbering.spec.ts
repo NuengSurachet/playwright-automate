@@ -80,7 +80,7 @@ test("Setup Document Numbering", async ({ page }) => {
     "SetupDocumentNumbering.startDate.toDateString() :>> ",
     SetupDocumentNumbering.startDate
   );
-  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+  await page.locator(`[name="s_date[]"]`).last().selectOption(SetupDocumentNumbering.format);
   await page.getByText("Save").click();
   await page.getByRole("button", { name: "OK" }).click();
 
@@ -150,7 +150,7 @@ test("Setup Document Numbering", async ({ page }) => {
     "SetupDocumentNumbering.startDate.toDateString() :>> ",
     SetupDocumentNumbering.startDate
   );
-  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+  await page.locator(`[name="s_date[]"]`).last().selectOption(SetupDocumentNumbering.format);
 
   await page.getByText("New Series").click();
   await page
@@ -210,7 +210,7 @@ test("Setup Document Numbering", async ({ page }) => {
     "SetupDocumentNumbering.startDate.toDateString() :>> ",
     SetupDocumentNumbering.startDate
   );
-  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+  await page.locator(`[name="s_date[]"]`).last().selectOption(SetupDocumentNumbering.format);
 
   await page.getByText("New Series").click();
   await page
@@ -270,7 +270,7 @@ test("Setup Document Numbering", async ({ page }) => {
     "SetupDocumentNumbering.startDate.toDateString() :>> ",
     SetupDocumentNumbering.startDate
   );
-  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+  await page.locator(`[name="s_date[]"]`).last().selectOption(SetupDocumentNumbering.format);
 
   await page.getByText("New Series").click();
   await page
@@ -330,7 +330,7 @@ test("Setup Document Numbering", async ({ page }) => {
     "SetupDocumentNumbering.startDate.toDateString() :>> ",
     SetupDocumentNumbering.startDate
   );
-  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+  await page.locator(`[name="s_date[]"]`).last().selectOption(SetupDocumentNumbering.format);
 
   await page.getByText("New Series").click();
   await page
@@ -390,7 +390,7 @@ test("Setup Document Numbering", async ({ page }) => {
     "SetupDocumentNumbering.startDate.toDateString() :>> ",
     SetupDocumentNumbering.startDate
   );
-  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+  await page.locator(`[name="s_date[]"]`).last().selectOption(SetupDocumentNumbering.format);
 
   await page.getByText("New Series").click();
   await page
@@ -450,7 +450,7 @@ test("Setup Document Numbering", async ({ page }) => {
     "SetupDocumentNumbering.startDate.toDateString() :>> ",
     SetupDocumentNumbering.startDate
   );
-  await page.locator(`[name="s_date[]"]`).last().selectOption("ym");
+  await page.locator(`[name="s_date[]"]`).last().selectOption(SetupDocumentNumbering.format);
   await page.getByText("Save").click();
   await page.getByRole("button", { name: "OK" }).click();
 
