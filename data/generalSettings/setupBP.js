@@ -1,6 +1,6 @@
 const BusinessPartnerGroup ={
-    "BPGroupCode":"M-VA8",          //BP Group Code : *  (ห้ามซ้ำ)
-    "BPGroupName":"MA-Vendor",     //BP Group Name : *
+    "BPGroupCode":"F-VA8",          //BP Group Code : *  (ห้ามซ้ำ)
+    "BPGroupName":"FA-Vendor",     //BP Group Name : *
     "BPGroupType":"Vendor",       //BP Group Type : *  (Vendor,Customer)
     "ChartofAccount":"21203010",        //Chart of Account : *
     "Status":"Active",     //Status : * (Active.Inactive)
@@ -11,7 +11,7 @@ export default BusinessPartnerGroup;
 
 
 export const BusinessPartner={
-    "BPCode":"M-VA8",                //BP Code : *
+    "BPCode":"F-VA8",                //BP Code : *
     "BPName":"Teka Construction",       //BP Name : *
     "BPType1":"S",    //(S=Vendor ,C=Customer )
     "BPType2":"C",   //(C=Company ,I=Private)
@@ -20,9 +20,9 @@ export const BusinessPartner={
     "BPGroup":"V00001",     //BP Group : *
 //Tab  Contact Persons
     "ContactPersons":{
-        "ContactID":"M-VA8",     //Contact ID :*
-        "FirstName":"M-VA8",     //First Name :*
-        "LastName":"M-VA8",      //Last Name :*
+        "ContactID":"F-VA8",     //Contact ID :*
+        "FirstName":"F-VA8",     //First Name :*
+        "LastName":"F-VA8",      //Last Name :*
         "Position":"Tester",   //Position :*
         "Telephone1":"0000000000", //Telephone 1 :*
     }, 

@@ -2,8 +2,8 @@
 const ProjectUnits =[
     {
         "ProjectCode":"T0001",      //Project Code : *
-        "UnitCode":"M01",           //Unit Code : *  (ห้ามซ้ำ)
-        "UnitName":"M01",               //Unit Name : *
+        "UnitCode":"M011",           //Unit Code : *  (ห้ามซ้ำ)
+        "UnitName":"M011",               //Unit Name : *
         "ValidFrom":"2024-01-01",              //Valid From : *
         "ValidTo":"2024-12-01",         //Valid To : 
         "Model":"M-1D",             //Model : *
@@ -19,8 +19,8 @@ const ProjectUnits =[
     },
     {
         "ProjectCode":"T0001",      //Project Code : *
-        "UnitCode":"M02",           //Unit Code : *  (ห้ามซ้ำ)
-        "UnitName":"M02",               //Unit Name : *
+        "UnitCode":"M021",           //Unit Code : *  (ห้ามซ้ำ)
+        "UnitName":"M021",               //Unit Name : *
         "ValidFrom":"2024-01-01",              //Valid From : *
         "ValidTo":"2024-12-01",         //Valid To : 
         "Model":"M-1D",             //Model : *
@@ -36,8 +36,8 @@ const ProjectUnits =[
     },
     {
         "ProjectCode":"T0001",      //Project Code : *
-        "UnitCode":"M03",           //Unit Code : *  (ห้ามซ้ำ)
-        "UnitName":"M03",               //Unit Name : *
+        "UnitCode":"M031",           //Unit Code : *  (ห้ามซ้ำ)
+        "UnitName":"M031",               //Unit Name : *
         "ValidFrom":"2024-01-01",              //Valid From : *
         "ValidTo":"2024-12-01",         //Valid To : 
         "Model":"M-1D",             //Model : *
