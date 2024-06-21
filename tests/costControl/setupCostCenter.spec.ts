@@ -4,10 +4,9 @@ import dataSetting from "../../data/common/TestSetting.json";
 import { fullScreenMode } from "../../src/pages/common/fullScreenMode";
 import setupPermissionReport from "../../data/generalSettings/setupPermissionReport";
 import { setupProjectType } from "../../data/generalSettings/setupProjectType";
-import { setupModelType } from "../../data/generalSettings/setupModelType";
 const data = dataSetting.Login;
 
-test("Setup Model Type", async ({ page }) => {
+test("Setup Cost Center", async ({ page }) => {
   //fullScreenMode(page);
   test.setTimeout(600000);
 
@@ -16,24 +15,31 @@ test("Setup Model Type", async ({ page }) => {
   await loginPage.login(data.username, data.password);
   await page.goto(data.site + "/auth/login/" + data.username + "/PPA");
   await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
-  await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
-  await page.getByRole("link", { name: " Setup Model Type" }).click();
-  await page.getByRole("button", { name: " New" }).click();
-  await page.locator("#model_type_code").click();
-  await page.locator("#model_type_code").fill(setupModelType.modelTypeCode);
-  await page.locator("#model_type_name").fill(setupModelType.modelTypeName);
-  await page.locator("#model_type_name_eng").click();
+  await page.locator("a").filter({ hasText: "Cost Control" }).click();
+  await page.getByRole("link", { name: " Setup Cost Center" }).click();
+  await page.getByRole("button", { name: " Add" }).click();
+  await page.locator("#cgroup_code").click();
+  await page.locator("#cgroup_code").fill("icon001");
+  await page.locator("#cgroup_name").click();
+  await page.locator("#cgroup_name").fill("ค่าน้ำประปา");
+
+  await page.locator("#valid_from").fill("2024-06-21");
+
+  await page.locator("#basiccc_b_filter").getByLabel("Filter:").click();
   await page
-    .locator("#model_type_name_eng")
-    .fill(setupModelType.modelTypeNameEN);
-  await page.locator("#short_name").click();
-  await page.locator("#short_name").fill(setupModelType.modelTypeShortName);
+    .locator("#basiccc_b_filter")
+    .getByLabel("Filter:")
+    .fill("น้ำประปา");
   await page
-    .locator(`[id="project_type"]`)
-    .selectOption(setupModelType.ProjectType);
-  await page.waitForTimeout(1500);
-  await page.locator("#save_t").click();
+    .locator("tr")
+    .filter({ hasText: "64 11501145 WIP" })
+    .locator("button")
+    .click();
+  await page.locator("#open_expense_acc").getByText("X").click();
+  await page.locator("#ex_lock_add2").check();
+  await page.getByText("Save").click();
   await page.getByRole("button", { name: "OK" }).click();
+  await page.getByLabel("Filter:").fill("");
   // const idValue = await page
   //   .locator(`[type="checkbox"][data-readonly]`)
   //   .nth(39)

@@ -1,10 +1,10 @@
 import { expect, test } from "@playwright/test";
 import dataSetting from "../../data/common/TestSetting.json"
-import { LoginPage } from "../../src/pages/common/login-page"
-import { setUpPermissionPositionData } from "../../data/generalSettings/setUpPermissionProject.js";
+import { LoginPage } from "../../src/pages/common/login-page.js"
+import { setupPermissionPositionData } from "../../data/generalSettings/setupPermissionProject.js";
 
 const dataLogin = dataSetting.Login;
-const data = setUpPermissionPositionData;
+const data = setupPermissionPositionData;
 
 test.describe("Setup Position", async () => {
     test("Setup Position", async ({ page }) => {

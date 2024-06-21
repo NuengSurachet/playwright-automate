@@ -1,7 +1,8 @@
 export const setupModelType = {
-    modelTypeCode: "icon001",
-    modelTypeName: "typeicon001",
-    modelTypeNameEN: "typeicon001",
-    modelTypeShortName: "typeicon001",
+    modelTypeCode: "icon00111",
+    modelTypeName: "typeicon00111",
+    modelTypeNameEN: "typeicon00111",
+    modelTypeShortName: "typeicon00111",
+    ProjectType: "003", //ใส่ชื่ Project Type ให้ตรงกันกับ Project Type ทีที่ต้องการเลือก
 }
 

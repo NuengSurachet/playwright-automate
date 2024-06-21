@@ -1,4 +1,7 @@
+import { faker } from '@faker-js/faker';
+
+
 export const setupProjectType = {
-    codee: "test01",
-    name: "test01",
+    codee: faker.string.uuid(), // ใส่ได้แค่3ตัวอักษรเท่านั้น
+    name: faker.internet.userName(),
 }
