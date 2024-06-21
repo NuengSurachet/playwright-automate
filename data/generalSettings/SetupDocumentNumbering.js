@@ -20,11 +20,6 @@ export const SetupDocumentNumbering = {
     //    dmy == >  DD/MM/YY
     //    Ymd == >  YYYY/MM/DD
     //    dmY == >  DD/MM/YYYY
-
-
-
-
-
     digits: "5", // ใส่จํานวนหลัก ช่องที่4
     nextRun: "99",//ใส่ค่าตัวเลข   ช่องที่5
     lastNo: "9999",//ใส่ค่าตัวเลข ช่องที่6

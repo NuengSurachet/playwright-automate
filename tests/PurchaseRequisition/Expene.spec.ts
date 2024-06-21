@@ -11,7 +11,6 @@ const deleteRow = async (page) => {
 };
 
 describe("ระบบจัดการในสำนักงาน", () => {
-  
   test("New PR", async ({ page }) => {
     // await page.setViewportSize({ width: 1920, height: 1080 });
     // await page.evaluate(() => {
@@ -20,10 +19,10 @@ describe("ระบบจัดการในสำนักงาน", () => {
     // });
 
     test.setTimeout(600000);
-    await page.goto(
-      data.site+"/auth/login/"+data.username+"/PPA"
-    );
-    
+    const loginPage = new LoginPage(page);
+    await loginPage.goto(data.site);
+    await loginPage.login(data.username, data.password);
+    await page.goto(data.site + "/auth/login/" + data.username + "/PPA");
     await page
       .getByRole("link", { name: "ระบบจัดการในสำนักงาน" })
       .click({ force: true });
