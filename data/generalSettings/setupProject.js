@@ -1,7 +1,7 @@
 const SetupProjects =
 [{
        "ProjectorDepartment":"Project",   //Project/Department :*      (value Project or Department)
-        "Code":"Icon-M2",                //Code : *  (ห้ามซ้ำ)
+        "Code":"Icon-M3",                //Code : *  (ห้ามซ้ำ)
         "Name":"Icon-M",                //Name : *
         "NameEng":"Icon-M",             //Name Eng : *
         "ControlBOQ":"Yes",             //Control BOQ : *

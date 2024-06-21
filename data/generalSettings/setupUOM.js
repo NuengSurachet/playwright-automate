@@ -1,5 +1,5 @@
 export const setupBusinessPartnerGroupData = {
-    bpGroupCode: "111111", // BP Group Code : *  (ห้ามซ้ำ) (MAX 6 characters)
+    bpGroupCode: "1111111", // BP Group Code : *  (ห้ามซ้ำ) (MAX 6 characters)
     bpGroupName: "BP Group Name", // BP Group Name : *
     bpGroupType: "Customer", // BP Group Type : *  (Vendor,Customer)
     chartOfAccount: "21206090", // Chart of Account : *
@@ -9,7 +9,7 @@ export const setupBusinessPartnerGroupData = {
 
 export const setupBusinessPartnerData = {
     bpCodeDropdown : "Manual", // default คือ Manual
-    bpCode : "M-V1", // BP Code : * (ห้ามซ้ำ)
+    bpCode : "M-V2", // BP Code : * (ห้ามซ้ำ)
     bpName : "TeKa Con", // BP Name : *
     bpGroup : "V00002 ผู้ให้บริการ SELECT ", // BP Group : *
     
