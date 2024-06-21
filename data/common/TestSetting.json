@@ -1,7 +1,9 @@
+
+
 {
     "Login":{
-            "site":"https://std-cm-test.iconcm.com/",
-            "username":"icon002",   
+            "site":"https://std-cm-test.iconcm.com/auth/index",
+            "username":"icon001",   
             "password":"123456"   
             }
 }
