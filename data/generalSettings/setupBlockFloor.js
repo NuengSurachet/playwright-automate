@@ -1,7 +1,7 @@
 export const setupBlockFloor = {
-    modelTypeCode: "icon001",
-    modelTypeName: "typeicon001",
-    modelTypeNameEN: "typeicon001",
-    modelTypeShortName: "typeicon001",
+    filterName: 'erp2', //ช่องค้นหาชื่อ filterName
+    blockCode: "icon001",//ช่องใส่ Block Code ห้ามซ้ำ
+    remarks: "icon001"//ช่องใส่ remarks
+
 }
 
