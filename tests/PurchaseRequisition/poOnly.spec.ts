@@ -1,4 +1,4 @@
-import { chromium, expect, selectors, test } from "@playwright/test";
+import { test } from "@playwright/test";
 import { LoginPage } from "../../src/pages/common/login-page";
 import dataSetting from "../../data/common/TestSetting.json";
 
@@ -6,82 +6,67 @@ const data = dataSetting.Login;
 
 
 test.describe("Login CM Tests", async () => {
-  test("Successful login with valid credentials", async ({ page }) => {
+  test("Po Only", async ({ page }) => {
+    await page.goto(data.site);
     const loginPage = new LoginPage(page);
-    // await loginPage.goto("https://maison-cm-test.iconframework.com/");
-    // await loginPage.login('icon003', '123456');
-    // await page.waitForLoadState('networkidle')
-    // const icon = page.locator('//i[@class="glyphicon glyphicon-log-in"]')
-    // await icon.hover();
-    // await icon.click();
-    test.setTimeout(50000);
-    // await page.setViewportSize({ width: 1920, height: 1080 });
-    // await page.evaluate(() => {
-    //   window.moveTo(0, 0);
-    //   window.resizeTo(screen.width, screen.height);
-    // });await page.goto(
-    await page.goto(
-      data.username+ "auth/login"+data.username+"/ICON/"
-    );
-    // await page
-    //   .getByRole("link", { name: "ระบบจัดการในสำนักงาน" })
-    //   .click({ force: true });
-    // await page.getByRole("link", { name: " New PR" }).click();
-    // await page.getByPlaceholder("หมายเหตุ").fill("test - PO ohmtest");
-    // await page.getByPlaceholder("สถานที่ส่งของ").fill("bangna");
-    // const selectOption = page.locator('//select[@id="sendapprove"]');
-    // await selectOption.selectOption("ICON003");
+    await loginPage.goto(data.site);
+    await loginPage.login(data.username, data.password);
+    await page.getByRole('link', { name: 'ระบบจัดการในสำนักงาน' }).click();
+    await page.getByRole("link", { name: " New PR" }).click();
+    await page.getByPlaceholder("หมายเหตุ").fill("test - PO ohmtest");
+    await page.getByPlaceholder("สถานที่ส่งของ").fill("bangna");
+    const selectOption = page.locator('//select[@id="sendapprove"]');
+    await selectOption.selectOption("ICON003");
 
-    // const click = page.locator("#pj_ex").getByRole("button", { name: "" });
-    // await page.waitForLoadState("load");
-    // await click.click();
-    // await page.getByRole('row', { name: '1073 Nue center bangna SELECT' }).getByRole('button').click();
+    const click = page.locator("#pj_ex").getByRole("button", { name: "" });
+    await page.waitForLoadState("load");
+    await click.click();
+    await page.getByRole('row', { name: '1073 Nue center bangna SELECT' }).getByRole('button').click();
 
-    // await page.locator("#dimension")
-    // await page.waitForLoadState("load");
+    await page.locator("#dimension")
+    await page.waitForLoadState("load");
 
-    // await page.getByRole("button", { name: "" }).nth(1).click();
-    // await page.getByRole('row', { name: '1 asdasd asd 0000000000000' }).getByRole('button').click();
-    // await page.locator('//button[@id="select_add_sub1"]').click();
-    // await page.waitForLoadState("load");
+    await page.getByRole("button", { name: "" }).nth(1).click();
+    await page.getByRole('row', { name: '1 asdasd asd 0000000000000' }).getByRole('button').click();
+    await page.locator('//button[@id="select_add_sub1"]').click();
+    await page.waitForLoadState("load");
 
-    // await page.locator('//a[@id="sss"]').click();
-    // await page
-    //   .locator('//button[@class="openun btn btn-info btn-block"]')
-    //   .click();
-    // await page.locator('//button[@id="select_item3"]').click();
-    // await page.locator('//a[@class="insertopen1"]').hover();
-    // await page
-    //   .locator(' //i[@class="glyphicon glyphicon-folder-open"]')
-    //   .click();
-    // await page.waitForLoadState("load");
-    // await page
-    //   .locator('//a[@class="label label-block label-info insertopenxx3"]')
-    //   .click();
-    // await page.getByPlaceholder("กรอกปริมาณ", { exact: true }).click();
-    // await page.getByPlaceholder("กรอกปริมาณ", { exact: true }).fill("2");
-    // await page.getByRole("textbox", { name: "กรอกราคา/หน่วย" }).click();
-    // await page.getByRole("textbox", { name: "กรอกราคา/หน่วย" }).fill("2000");
-    // await page.locator("#vatper__").selectOption("7");
-    // await page.locator("#pdisamt").click();
-    // await page.locator("#datesend").fill("2024-06-13");
-    // await page.locator("#duedate").fill("2024-06-30");
-    // await page.getByRole("button", { name: " Add Item" }).click();
-    // await page.getByRole("button", { name: "OK" }).click();
-    // await page.getByRole("button", { name: "Close" }).click();
-    // await page.getByText("Save").click();
-    // await page.getByText("Send Approve").click();
-    // // await page.locator("#userapprove97").click();
-    // await page.locator('//i[@class="icon icon-bell2"]').click();
-    // await page.waitForLoadState("load");
-    // await page.locator('(//img[@class="img-circle img-sm"])[1]').click();
-    // await page.click("div.modal-dialog.modal-full .btn.bg-success-600");
-    // await page
-    //   .locator(
-    //     '//a[@href="https://std-cm-test.iconcm.com/panel/office"]//img'
-    //   )
-      
-    //   .click();
+    await page.locator('//a[@id="sss"]').click();
+    await page
+      .locator('//button[@class="openun btn btn-info btn-block"]')
+      .click();
+    await page.locator('//button[@id="select_item3"]').click();
+    await page.locator('//a[@class="insertopen1"]').hover();
+    await page
+      .locator(' //i[@class="glyphicon glyphicon-folder-open"]')
+      .click();
+    await page.waitForLoadState("load");
+    await page
+      .locator('//a[@class="label label-block label-info insertopenxx3"]')
+      .click();
+    await page.getByPlaceholder("กรอกปริมาณ", { exact: true }).click();
+    await page.getByPlaceholder("กรอกปริมาณ", { exact: true }).fill("2");
+    await page.getByRole("textbox", { name: "กรอกราคา/หน่วย" }).click();
+    await page.getByRole("textbox", { name: "กรอกราคา/หน่วย" }).fill("2000");
+    await page.locator("#vatper__").selectOption("7");
+    await page.locator("#pdisamt").click();
+    await page.locator("#datesend").fill("2024-06-13");
+    await page.locator("#duedate").fill("2024-06-30");
+    await page.getByRole("button", { name: " Add Item" }).click();
+    await page.getByRole("button", { name: "OK" }).click();
+    await page.getByRole("button", { name: "Close" }).click();
+    await page.getByText("Save").click();
+    await page.getByText("Send Approve").click();
+    // await page.locator("#userapprove97").click();
+    await page.locator('//i[@class="icon icon-bell2"]').click();
+    await page.waitForLoadState("load");
+    await page.locator('(//img[@class="img-circle img-sm"])[1]').click();
+    await page.click("div.modal-dialog.modal-full .btn.bg-success-600");
+    await page
+      .locator(
+        '//a[@href="https://std-cm-test.iconcm.com/panel/office"]//img'
+      )
+      .click();
 
     await page
       .getByRole("link", { name: "ระบบสั่งซื้อ" })
