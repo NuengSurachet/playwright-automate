@@ -1,10 +1,10 @@
 import { test } from "@playwright/test";
 import dataSetting from "../../data/common/TestSetting.json"
-import { LoginPage } from "../../src/pages/common/login-page"
-import { setUpPositionData } from "../../data/generalSettings/setUpPosition.js"
+import { LoginPage } from "../../src/pages/common/login-page.js"
+import { setupPositionData } from "../../data/generalSettings/setUpPosition.js";
 
 const dataLogin = dataSetting.Login;
-const data = setUpPositionData;
+const data = setupPositionData;
 
 test.describe("Setup Position", async () => {
     test("Setup Position", async ({ page }) => {
@@ -12,7 +12,7 @@ test.describe("Setup Position", async () => {
         const loginPage = new LoginPage(page);
         await loginPage.goto(dataLogin.site);
         await loginPage.login(dataLogin.username, dataLogin.password);
-        await page.waitForLoadState("load");
+        await page.waitForLoadState();
         await page
           .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
           .click({ force: true });
