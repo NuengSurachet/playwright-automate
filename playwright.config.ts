@@ -53,9 +53,9 @@ export default defineConfig({
       /* Set the default viewport size */
     // viewport: { width: 1280, height: 720 },
 
-    //  launchOptions:{
-    //   slowMo:300  //ช้าลง
-    //  }
+     launchOptions:{
+      slowMo:100  //ช้าลง
+     }
 
    
   },
