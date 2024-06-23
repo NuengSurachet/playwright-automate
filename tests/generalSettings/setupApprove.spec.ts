@@ -79,7 +79,7 @@ const Datanotfound = await page.evaluate(() => {
      await page.waitForSelector('a[onclick^="load_detail_arganizechart"]');
      // Click the element
      await page.locator('a[onclick^="load_detail_arganizechart"]').first().click({ force: true }); 
-     await page.locator('#addjobtitle').click({ force: true });
+     await page.locator(`[id="addjobtitle"]`).click({ force: true });
      await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
      await page.waitForLoadState();
      await page.getByLabel('Search:').click();
@@ -89,7 +89,7 @@ const Datanotfound = await page.evaluate(() => {
      await page.getByLabel('No.: activate to sort column').press('Tab');
      await page.getByLabel('Project/Department: activate').press('Tab');
      await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-     await page.getByRole('button', { name: 'SELECT' }).press('Enter');
+     await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
      await page.getByText('Save', { exact: true }).click();
      await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
      await page.getByRole('button', { name: 'OK' }).click({ force: true });
@@ -149,7 +149,7 @@ await page.click(`[onclick="choose('1')"]`)
       .click({ force: true });
 
 
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -158,19 +158,17 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
-      
-      
-      await page.getByRole('button', { name: 'OK' }).click({ force: true });
-      currentUrl=page.url();
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true }); 
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
+     await page.getByRole('button', { name: 'OK' }).click({ force: true });
 
   //   await page.click(`[id="addjobtitle"]`)
   //   //await page.locator("#addjobtitle").click({ force: true });
   //   await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
   //   await page.getByLabel("Search:").click({ force: true });
   //   await page.getByLabel("Search:").fill(setGroupData.user);
-  //   await page.getByRole('button', { name: 'SELECT' }).press('Enter');
+  //   await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
   //   await page.getByText("Save", { exact: true }).click({ force: true });
   //   await page.getByRole("button", { name: "OK" }).click({ force: true });
   // //  }
@@ -212,7 +210,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -221,10 +219,11 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
-      await page.getByRole('button', { name: 'OK' }).click({ force: true });
-      currentUrl=page.url();
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
+     await page.getByRole('button', { name: 'OK' }).click({ force: true });
   });
 
 
@@ -265,7 +264,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -274,10 +273,11 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
-      await page.getByRole('button', { name: 'OK' }).click({ force: true });
-      currentUrl=page.url();
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
+     await page.getByRole('button', { name: 'OK' }).click({ force: true });
   });
 
   test("Test Setup Approve Purchase Requisition", async () => {
@@ -317,7 +317,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -326,10 +326,11 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
-      await page.getByRole('button', { name: 'OK' }).click({ force: true });
-      currentUrl=page.url();
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
+     await page.getByRole('button', { name: 'OK' }).click({ force: true });
   });
 
 
@@ -370,7 +371,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -379,10 +380,11 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
-      await page.getByRole('button', { name: 'OK' }).click({ force: true });
-      currentUrl=page.url();
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
+     await page.getByRole('button', { name: 'OK' }).click({ force: true });
   });
 
   test("Test Setup Approve Purchase Order", async () => {
@@ -423,7 +425,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -432,10 +434,11 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
-      await page.getByRole('button', { name: 'OK' }).click({ force: true });
-      currentUrl=page.url();
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
+     await page.getByRole('button', { name: 'OK' }).click({ force: true });
   });
 
   test("Test Setup Purchase Order Advance Deposit", async () => {
@@ -476,7 +479,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -485,10 +488,11 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
-      await page.getByRole('button', { name: 'OK' }).click({ force: true });
-      currentUrl=page.url();
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
+     await page.getByRole('button', { name: 'OK' }).click({ force: true });
   });
 
   test("Test Setup Purchase Order Decrement", async () => {
@@ -529,7 +533,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -538,10 +542,11 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
-      await page.getByRole('button', { name: 'OK' }).click({ force: true });
-      currentUrl=page.url();
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
+     await page.getByRole('button', { name: 'OK' }).click({ force: true });
   });
 
   test("Test Setup Work Order", async () => {
@@ -582,7 +587,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -591,10 +596,11 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
-      await page.getByRole('button', { name: 'OK' }).click({ force: true });
-      currentUrl=page.url();
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
+     await page.getByRole('button', { name: 'OK' }).click({ force: true });
   });
 
   test("Test Setup Work Order Decrement", async () => {
@@ -635,7 +641,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -644,10 +650,11 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
-      await page.getByRole('button', { name: 'OK' }).click({ force: true });
-      currentUrl=page.url();
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
+     await page.getByRole('button', { name: 'OK' }).click({ force: true });
   });
 
 
@@ -690,7 +697,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -699,8 +706,9 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
       await page.getByRole('button', { name: 'OK' }).click({ force: true });
 
   });
@@ -742,7 +750,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -751,8 +759,9 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
       await page.getByRole('button', { name: 'OK' }).click({ force: true });
 
   });
@@ -794,7 +803,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -803,8 +812,9 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
       await page.getByRole('button', { name: 'OK' }).click({ force: true });
 
   });
@@ -847,7 +857,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -856,8 +866,9 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
       await page.getByRole('button', { name: 'OK' }).click({ force: true });
 
   });
@@ -901,7 +912,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -910,8 +921,9 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
       await page.getByRole('button', { name: 'OK' }).click({ force: true });
 
   });
@@ -952,7 +964,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
       //Add row
-      await page.locator('#addjobtitle').click({ force: true });
+      await page.locator(`[id="addjobtitle"]`).click({ force: true });
       await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
@@ -961,11 +973,14 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByLabel('No.: activate to sort column').press('Tab');
       await page.getByLabel('Project/Department: activate').press('Tab');
       await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
-      await page.getByRole('button', { name: 'SELECT' }).press('Enter');
-      await page.locator(`[class="btn btn-success"]`).click()
+      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
+      await page.getByText('Save', { exact: true }).click();
+     await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
       await page.getByRole('button', { name: 'OK' }).click({ force: true });
 
   });
 
 
 });
+
+     
