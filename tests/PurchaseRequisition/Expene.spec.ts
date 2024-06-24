@@ -18,7 +18,7 @@ describe("ระบบจัดการในสำนักงาน", () => {
     //   window.resizeTo(screen.width, screen.height);
     // });
 
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
     await loginPage.login(data.username, data.password);

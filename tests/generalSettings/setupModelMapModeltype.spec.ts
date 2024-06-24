@@ -7,7 +7,7 @@ const data = dataSetting.Login;
 
 test.describe("Setup Project", () => {
   test("Test Setup Project", async ({ page }) => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     //fullScreenMode(page)
 
     await page.pause();

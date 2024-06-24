@@ -8,7 +8,7 @@ const data = dataSetting.Login;
 
 test("Setup Cost Center", async ({ page }) => {
   //fullScreenMode(page);
-  test.setTimeout(600000);
+  // test.setTimeout(600000);
 
   const loginPage = new LoginPage(page);
   await loginPage.goto(data.site);

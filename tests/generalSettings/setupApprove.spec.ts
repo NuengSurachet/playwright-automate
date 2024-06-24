@@ -16,7 +16,7 @@ test.describe("Setup Approve", () => {
     currentUrl=page.url();
   });
   test("Test Setup Approve BOM", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.pause();
     await page.getByPlaceholder("Username").click({ force: true });
     await page.getByPlaceholder("Username").fill(data.username, { force: true });
@@ -100,7 +100,7 @@ const Datanotfound = await page.evaluate(() => {
   });
 
   test("Test Setup Approve BOQ", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -176,7 +176,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
   
   test("Test Setup Approve Cost Control", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -228,7 +228,7 @@ await page.click(`[onclick="choose('1')"]`)
 
 
   test("Test Setup Approve Adjust Budget", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -281,7 +281,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
 
   test("Test Setup Approve Purchase Requisition", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -335,7 +335,7 @@ await page.click(`[onclick="choose('1')"]`)
 
 
   test("Test Setup Approve Purchase Requisition Decrement", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -388,7 +388,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
 
   test("Test Setup Approve Purchase Order", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -442,7 +442,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
 
   test("Test Setup Purchase Order Advance Deposit", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -496,7 +496,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
 
   test("Test Setup Purchase Order Decrement", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -550,7 +550,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
 
   test("Test Setup Work Order", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -604,7 +604,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
 
   test("Test Setup Work Order Decrement", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -660,7 +660,7 @@ await page.click(`[onclick="choose('1')"]`)
 
 
   test("Test Setup Progress Subcontrator", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -714,7 +714,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
 
   test("Test Setup Contract Close", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -767,7 +767,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
 
   test("Test Setup Petty Cash", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -820,7 +820,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
 
   test("Test Setup Purchase Order Receive", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -874,7 +874,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
 
   test("Test Setup Debit/Credit Note", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);
@@ -929,7 +929,7 @@ await page.click(`[onclick="choose('1')"]`)
   });
 
   test("Test Setup Issue", async () => {
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto(currentUrl);
     await page.locator("#ascrail2000 div").click({ force: true });
     await page.mouse.wheel(500, 0);

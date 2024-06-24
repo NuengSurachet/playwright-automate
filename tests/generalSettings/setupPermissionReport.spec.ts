@@ -7,7 +7,7 @@ const data = dataSetting.Login;
 
 test("Setup Permission Report", async ({ page }) => {
   //fullScreenMode(page);
-  test.setTimeout(600000);
+  // test.setTimeout(600000);
 
   const loginPage = new LoginPage(page);
   await loginPage.goto(data.site);
