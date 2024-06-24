@@ -4,15 +4,14 @@ import dataSetting from "../../data/common/TestSetting.json";
 import { setupProjectType } from "../../data/generalSettings/setupProjectType";
 import { SetupDocumentNumbering } from "../../data/generalSettings/SetupDocumentNumbering";
 const data = dataSetting.Login;
-
+const dataLogin = dataSetting.Login;
 test("Setup Document Numbering", async ({ page }) => {
   //fullScreenMode(page);
-  test.setTimeout(6000);
-
+  await page.goto(dataLogin.site);
   const loginPage = new LoginPage(page);
-  await loginPage.goto(data.site);
-  await loginPage.login(data.username, data.password);
-  await page.goto(data.site + "/auth/login/" + data.username + "/PPA");
+  await loginPage.goto(dataLogin.site);
+  await loginPage.login(dataLogin.username, dataLogin.password);
+  await page.waitForTimeout(3000);
   await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
   await page.getByRole("link", { name: " Setup Document Numbering" }).click();
