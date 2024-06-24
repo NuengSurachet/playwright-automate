@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 import dataSetting from "../../data/common/TestSetting.json"
-import { LoginPage } from "../../src/pages/common/login-page"
+import { LoginPage } from "../../src/pages/common/login-page.js"
 import { setUpPhaseBuildingData } from "../../data/generalSettings/setUpPhaseBuilding.js";
 
 const dataLogin = dataSetting.Login;
