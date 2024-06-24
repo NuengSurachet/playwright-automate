@@ -7,18 +7,25 @@ const data = dataSetting.Login;
 
 test("Setup Permission Report", async ({ page }) => {
   //fullScreenMode(page);
-  // test.setTimeout(600000);
+  test.setTimeout(6000);
 
   const loginPage = new LoginPage(page);
   await loginPage.goto(data.site);
   await loginPage.login(data.username, data.password);
   await page.goto(data.site + "/auth/login/" + data.username + "/PPA");
-  await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
-  await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
-  await page.getByRole("link", { name: " Setup Permission" }).click();
-  await page.getByRole("link", { name: " Report" }).click();
-  await page.getByRole("link", { name: "Role Member Permission" }).click();
-  await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
+  await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click({ force: true });
+  await page.locator("a").filter({ hasText: "Genaral Settings" }).click({ force: true });
+  // await page.getByRole("link", { name: " Setup Permission" }).click({ force: true });
+  await page.locator("#ascrail2000 div").click({ force: true });
+  await page.mouse.wheel(0, 500);
+  await page
+    .getByRole("link", { name: "Setup Permission" })
+    .click({ force: true });
+  await page.waitForLoadState();
+  await page.locator('a.button.btn.btn-default.btn-block.btn-float.btn-float-lg').click()
+  //await page.getByRole("link", { name: " Report" }).click({ force: true });
+  await page.getByRole("link", { name: "Role Member Permission" }).click({ force: true });
+  await page.locator("a").filter({ hasText: "Genaral Settings" }).click({ force: true });
   await page.getByRole("link", { name: " Setup Permission" }).click();
 
   await page.getByRole("link", { name: " Permission by User" }).click();
@@ -47,3 +54,4 @@ test("Setup Permission Report", async ({ page }) => {
 
   await page.getByRole("button", { name: " Close" }).click();
 });
+

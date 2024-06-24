@@ -7,7 +7,7 @@ const data = dataSetting.Login;
 
 test("Setup Document Numbering", async ({ page }) => {
   //fullScreenMode(page);
-  test.setTimeout(600000);
+  test.setTimeout(6000);
 
   const loginPage = new LoginPage(page);
   await loginPage.goto(data.site);

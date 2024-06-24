@@ -4,12 +4,11 @@ import dataSetting from "../../data/common/TestSetting.json";
 import { fullScreenMode } from "../../src/pages/common/fullScreenMode";
 import setupPermissionReport from "../../data/generalSettings/setupPermissionReport";
 import { setupProjectType } from "../../data/generalSettings/setupProjectType";
-import { setupModelType } from "../../data/generalSettings/setupModelType";
 const data = dataSetting.Login;
 
-test("Setup Model Type", async ({ page }) => {
+test("setup ProjectType", async ({ page }) => {
   //fullScreenMode(page);
-  // test.setTimeout(600000);
+  test.setTimeout(6000);
 
   const loginPage = new LoginPage(page);
   await loginPage.goto(data.site);
@@ -17,23 +16,17 @@ test("Setup Model Type", async ({ page }) => {
   await page.goto(data.site + "/auth/login/" + data.username + "/PPA");
   await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
-  await page.getByRole("link", { name: " Setup Model Type" }).click();
+  await page.getByRole("link", { name: " Setup Project Type" }).click();
   await page.getByRole("button", { name: " New" }).click();
-  await page.locator("#model_type_code").click();
-  await page.locator("#model_type_code").fill(setupModelType.modelTypeCode);
-  await page.locator("#model_type_name").fill(setupModelType.modelTypeName);
-  await page.locator("#model_type_name_eng").click();
-  await page
-    .locator("#model_type_name_eng")
-    .fill(setupModelType.modelTypeNameEN);
-  await page.locator("#short_name").click();
-  await page.locator("#short_name").fill(setupModelType.modelTypeShortName);
-  await page
-    .locator(`[id="project_type"]`)
-    .selectOption(setupModelType.ProjectType);
-  await page.waitForTimeout(1500);
-  await page.locator("#save_t").click();
-  await page.getByRole("button", { name: "OK" }).click();
+  await page.locator("#code").fill(setupProjectType.codee); //js
+  await page.locator("#name").fill(setupProjectType.name); //js
+  await page.getByRole("button", { name: " Save" }).click();
+  await page.getByRole("button", { name: "OK" }).click();  
+  await page.getByPlaceholder('Type to filter...').fill('nueng');
+  await page.getByPlaceholder('Type to filter...').click();
+  await page.getByPlaceholder('Type to filter...').fill(setupProjectType.name);
+  await page.getByRole('gridcell', { name: '' }).click();
+  await page.getByRole('button', { name: 'History Log' }).click();
   // const idValue = await page
   //   .locator(`[type="checkbox"][data-readonly]`)
   //   .nth(39)

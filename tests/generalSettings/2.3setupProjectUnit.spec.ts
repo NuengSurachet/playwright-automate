@@ -6,8 +6,8 @@ const data = dataSetting.Login;
 
 test.describe("Setup Project Unit", () => {
   test("Test Setup Project Unit", async ({ page }) => {
-    // test.setTimeout(600000);
-    // await page.pause();
+    test.setTimeout(6000);
+    await page.pause();
 
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);

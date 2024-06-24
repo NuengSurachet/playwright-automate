@@ -18,7 +18,7 @@ test.describe("Setup Business Partner", () => {
 
 
   test("Test Setup Business Partner Group" , async () => {
-    // test.setTimeout(600000);
+    test.setTimeout(6000);
     await page.pause();
 
     const loginPage = new LoginPage(page);
@@ -78,7 +78,7 @@ test.describe("Setup Business Partner", () => {
   });
 
   test("Test Setup Business Partner" , async () => {
-    // test.setTimeout(600000);
+    test.setTimeout(6000);
     await page.pause();
 
 

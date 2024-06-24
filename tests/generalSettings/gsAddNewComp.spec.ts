@@ -6,7 +6,7 @@ test.describe.skip("Setup Company", () => {
       const data=dataSetting.Login;
     
       test("Add new company", async () => {
-        // test.setTimeout(600000);
+        test.setTimeout(6000);
         const browser = await chromium.launch();
         const context = await browser.newContext();
         const page = await context.newPage();
@@ -93,7 +93,7 @@ test.describe.skip("Setup Company", () => {
   });
 
   test("Edit company ", async () => {
-    // test.setTimeout(600000);
+    test.setTimeout(600000);
     const browser = await chromium.launch();
     const context = await browser.newContext();
     const page = await context.newPage();
