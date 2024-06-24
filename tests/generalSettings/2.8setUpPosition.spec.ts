@@ -2,9 +2,11 @@ import { test } from "@playwright/test";
 import dataSetting from "../../data/common/TestSetting.json"
 import { LoginPage } from "../../src/pages/common/login-page.js"
 import { setupPositionData } from "../../data/generalSettings/setUpPosition.js";
+import { getSharedProjectType } from "../../src/utils/store/projectType.store.js";
 
 const dataLogin = dataSetting.Login;
 const data = setupPositionData;
+console.log('getSharedProjectType', getSharedProjectType("code"))
 
 test.describe("Setup Position", async () => {
     test("Setup Position", async ({ page }) => {

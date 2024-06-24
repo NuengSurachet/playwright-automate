@@ -19,7 +19,7 @@ test.describe("Setup Business Partner", () => {
 
   test("Test Setup Business Partner Group" , async () => {
    // test.setTimeout(6000);
-    await page.pause();
+    //await page.pause();
 
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
@@ -51,29 +51,9 @@ test.describe("Setup Business Partner", () => {
     await page.getByRole('radio', { name: 'Active', exact: true }).check();
     else
     await page.getByRole('radio', { name: 'Inactive' }).check();
-  
     await page.locator('#petty_cash_vg').selectOption(BusinessPartnerGroup.SubType);
-    // await page.locator('#frompost div').filter({ hasText: 'Sub Type' }).nth(1).click();
-    // await page.locator('#petty_cash_vg').selectOption('A');
-    // await page.locator('#petty_cash_vg').selectOption('SAP');
-    // await page.locator('#petty_cash_vg').selectOption('A');
-    // await page.locator('#petty_cash_vg').selectOption('P');
     await page.locator('#save_vg').click();
-    await page.waitForLoadState()
-    const res = await page
-        .locator("body > div.sweet-alert.showSweetAlert.visible > h2")
-        .textContent();
-      console.log(res);
-      if (res === "Update SAP Complete") {
-        await page
-          .locator(
-            "body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button"
-          )
-          .click();
-        await page.waitForLoadState();
-      }
 
-       
 
   });
 
@@ -81,13 +61,17 @@ test.describe("Setup Business Partner", () => {
     //test.setTimeout(6000);
     await page.pause();
 
-
+    const loginPage = new LoginPage(page);
+    await loginPage.goto(data.site);
+    await loginPage.login(data.username, data.password);
+    await page
+      .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
+      .click({ force: true });
+    await expect(page).not.toHaveURL(data.site + "panel/office");
+    await page.waitForLoadState();
+    await page.locator('a').filter({ hasText: 'Business Partner' }).first().click();
 await page.getByRole('link', { name: ' Setup Business Partner', exact: true }).click({ force: true });
-
-
-
 await page.getByRole('link', { name: ' Add' }).click({ force: true });
-
 await page.locator('#vender_code').click({ force: true });
 await page.locator('#vender_code').fill(BusinessPartner.BPCode);
 await page.locator('#vender_name').click();

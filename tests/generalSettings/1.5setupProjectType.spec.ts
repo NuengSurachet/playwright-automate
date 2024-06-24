@@ -4,12 +4,13 @@ import dataSetting from "../../data/common/TestSetting.json";
 import { fullScreenMode } from "../../src/pages/common/fullScreenMode";
 import setupPermissionReport from "../../data/generalSettings/setupPermissionReport";
 import { setupProjectType } from "../../data/generalSettings/setupProjectType";
+import { getSharedProjectType } from "../../src/utils/store/projectType.store";
 const data = dataSetting.Login;
 
 test("setup ProjectType", async ({ page }) => {
   //fullScreenMode(page);
   //test.setTimeout(6000);
-
+console.log(getSharedProjectType('ProjectCode'))
   const loginPage = new LoginPage(page);
   await loginPage.goto(data.site);
   await loginPage.login(data.username, data.password);
@@ -18,7 +19,7 @@ test("setup ProjectType", async ({ page }) => {
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
   await page.getByRole("link", { name: " Setup Project Type" }).click();
   await page.getByRole("button", { name: " New" }).click();
-  await page.locator("#code").fill(setupProjectType.codee); //js
+  await page.locator("#code").fill(setupProjectType.code); //js
   await page.locator("#name").fill(setupProjectType.name); //js
   await page.getByRole("button", { name: " Save" }).click();
   await page.getByRole("button", { name: "OK" }).click();  

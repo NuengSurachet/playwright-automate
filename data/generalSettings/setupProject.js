@@ -1,18 +1,21 @@
+import { setSharedProjectType,getSharedProjectType } from "../../src/utils/store/projectType.store";
+
+// setSharedProjectType('ProjectCode',"pc1");
 const SetupProjects =
 [{
        "ProjectorDepartment":"Project",   //Project/Department :*      (value Project or Department)
-        "Code":"Icon-M4",                //Code : *  (ห้ามซ้ำ)
-        "Name":"Icon-M4",                //Name : *
-        "NameEng":"Icon-M4",             //Name Eng : *
+        "Code":getSharedProjectType('ProjectCode'),                //Code : *  (ห้ามซ้ำ)
+        "Name":getSharedProjectType('ProjectCode'),                //Name : *
+        "NameEng":getSharedProjectType('ProjectCode'),             //Name Eng : *
         "ControlBOQ":"Yes",             //Control BOQ : *
         "StartDate":"2024-06-01",         //Start Date : *
         "EstimateCloseDate":"2025-06-01",   //Estimate Close Date :
         "ShortName":"Icon",             //Short Name :
         "Status":"Active",                 //Status : *
         "ControlBudget":"by Summary Cost Code",    //  Control Budget : *
-        "LockProjectDate":"true",         //Lock Project Date :   
+        "LockProjectDate":"false",         //Lock Project Date :     (true คือจะใช้งานไม่ได้ชั่วคราว)
         "InsuranceContractYear":"10",       //Insurance Contract/Year :
-        "ProjectType":"a",             //Project Type : *
+        "ProjectType":getSharedProjectType('ProjectType'),             //Project Type : *
         "JobsDetail":"Icon RPA",        //Jobs Detail :
         "Tel":"0987654327",             //Tel :
         "EMail":"icon@g.com",          //E-Mail :
