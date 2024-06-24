@@ -1,15 +1,15 @@
 export const setupBusinessPartnerGroupData = {
-    bpGroupCode: "1111111", // BP Group Code : *  (ห้ามซ้ำ) (MAX 6 characters)
+    bpGroupCode: "Bp01", // BP Group Code : *  (ห้ามซ้ำ) (MAX 6 characters)
     bpGroupName: "BP Group Name", // BP Group Name : *
     bpGroupType: "Customer", // BP Group Type : *  (Vendor,Customer)
-    chartOfAccount: "21206090", // Chart of Account : *
+    chartOfAccount: "21203002", // Chart of Account : *
     status : "Active", // Status (Active,Inactive)
     subtype :  'เงินทดรองจ่าย', // Sub Type : *
 }
 
 export const setupBusinessPartnerData = {
     bpCodeDropdown : "Manual", // default คือ Manual
-    bpCode : "M-V2", // BP Code : * (ห้ามซ้ำ)
+    bpCode : "M-V1", // BP Code : * (ห้ามซ้ำ)
     bpName : "TeKa Con", // BP Name : *
     bpGroup : "V00002 ผู้ให้บริการ SELECT ", // BP Group : *
     

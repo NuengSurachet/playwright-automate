@@ -1,6 +1,9 @@
+import { getSharedProjectType,setSharedProjectType } from "../../src/utils/store/projectType.store";
+
+setSharedProjectType('Unit',"UN01")
 export const mapUnitBlockFloorData = {
-    projectName : "Icon Village Bangna",
-    unitNames : ["UU001"], //ใส่ชื่อ Unit เพื่อให้ระบบเลือกให้
-    blockCode : "BB01" // ใส่ Block Code เพื่อให้ระบบเลือกให้
+    projectName : getSharedProjectType('ProjectCode'),
+    unitNames : [getSharedProjectType('Unit')], //ใส่ชื่อ Unit เพื่อให้ระบบเลือกให้
+    blockCode : getSharedProjectType('BlockCode') // ใส่ Block Code เพื่อให้ระบบเลือกให้
     
 }

@@ -1,6 +1,10 @@
+import { setSharedProjectType,getSharedProjectType } from "../../src/utils/store/projectType.store"
+
+setSharedProjectType('PhaseCode',"Ph01")
+
 export const setUpPhaseBuildingData = {
-    name : "0183", // หา Project Name , Project Code
-    phaseCode : "ICONTEST003", // Phase Code : * (ห้ามซ้ำ)
-    phaseName : "ICONTEST003", // Phase Name : *
-    phaseNameEN : "ICONTEST003", // Phase Name (EN) : *
+    name : getSharedProjectType('ProjectCode'), // หา Project Name , Project Code
+    phaseCode : getSharedProjectType('PhaseCode'), // Phase Code : * (ห้ามซ้ำ)
+    phaseName : getSharedProjectType('PhaseCode'), // Phase Name : *
+    phaseNameEN : getSharedProjectType('PhaseCode'), // Phase Name (EN) : *
 }

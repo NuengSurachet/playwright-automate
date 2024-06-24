@@ -1,8 +1,11 @@
+import { setSharedProjectType,getSharedProjectType } from "../../src/utils/store/projectType.store"
+
+setSharedProjectType('ModelTypeCode',"MCT1")
 export const setupModelType = {
-    modelTypeCode: "icon00111",  //ห้ามซ้ำ ใส่ช่องหัวข้อ modelTypeCode
-    modelTypeName: "typeicon00111",//ห้ามซ้ำ ใส่ช่องหัวข้อ modelTypeName
-    modelTypeNameEN: "typeicon00111",//ห้ามซ้ำ ใส่ช่องหัวข้อ modelTypeNameEN
-    modelTypeShortName: "typeicon00111",//ห้ามซ้ำ ใส่ช่องหัวข้อ modelTypeShortName
-    ProjectType: "003", //ใส่ชื่ Project Type ให้ตรงกันกับ Project Type ทีที่ต้องการเลือก
+    modelTypeCode:getSharedProjectType('ModelTypeCode'),  //ห้ามซ้ำ ใส่ช่องหัวข้อ modelTypeCode
+    modelTypeName: getSharedProjectType('ModelTypeCode')+"-Test",//ห้ามซ้ำ ใส่ช่องหัวข้อ modelTypeName
+    modelTypeNameEN: getSharedProjectType('ModelTypeCode')+"-Test",//ห้ามซ้ำ ใส่ช่องหัวข้อ modelTypeNameEN
+    modelTypeShortName: getSharedProjectType('ModelTypeCode')+"-Test",//ห้ามซ้ำ ใส่ช่องหัวข้อ modelTypeShortName
+    ProjectType: getSharedProjectType('ProjectType'), //ใส่ชื่ Project Type ให้ตรงกันกับ Project Type ทีที่ต้องการเลือก
 }
 

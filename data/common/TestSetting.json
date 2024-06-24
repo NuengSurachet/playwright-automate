@@ -2,21 +2,21 @@
 
 {
     "Login": {
-        "site": "https://std-cm-test.iconcm.com/",
-        "username": "icon001",
+        "site": "https://falcrumasia-cm-test.iconframework.com",
+        "username": "NAN02",
         "password": "123456"
     },
     "Users": {
         "ADMIN": {
-            "username": "icon001",
+            "username": "NAN02",
             "password": "123456"
         },
         "DEV": {
-            "username": "icon002",
+            "username": "NAN02",
             "password": "123456"
         },
         "TESTER": {
-            "username": "icon003",
+            "username": "NAN02",
             "password": "123456"
         }
     },

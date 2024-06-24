@@ -4,27 +4,31 @@ import dataSetting from "../../data/common/TestSetting.json";
 import { fullScreenMode } from "../../src/pages/common/fullScreenMode";
 import setupPermissionReport from "../../data/generalSettings/setupPermissionReport";
 import { setupProjectType } from "../../data/generalSettings/setupProjectType";
+import { getSharedProjectType } from "../../src/utils/store/projectType.store";
 const data = dataSetting.Login;
-const dataLogin = dataSetting.Login;
+
 test("setup ProjectType", async ({ page }) => {
   //fullScreenMode(page);
-  await page.goto(dataLogin.site);
+  //test.setTimeout(6000);
+console.log(getSharedProjectType('ProjectCode'))
   const loginPage = new LoginPage(page);
-  await loginPage.goto(dataLogin.site);
-  await loginPage.login(dataLogin.username, dataLogin.password);
-  await page.waitForTimeout(3000);
+  await loginPage.goto(data.site);
+  await loginPage.login(data.username, data.password);
+  // await page.goto(data.site + "/auth/login/" + data.username + "");
   await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
   await page.getByRole("link", { name: " Setup Project Type" }).click();
   await page.getByRole("button", { name: " New" }).click();
-  await page.locator("#code").fill(setupProjectType.codee); //js
+  await page.locator("#code").fill(setupProjectType.code); //js
   await page.locator("#name").fill(setupProjectType.name); //js
   await page.getByRole("button", { name: " Save" }).click();
   await page.getByRole("button", { name: "OK" }).click();  
+  // await page.getByPlaceholder('Type to filter...').fill('nueng');
   await page.getByPlaceholder('Type to filter...').click();
   await page.getByPlaceholder('Type to filter...').fill(setupProjectType.name);
   await page.getByRole('gridcell', { name: '' }).click();
-  await page.getByRole('button', { name: 'History Log' }).click();
+  await page.locator('body').click();
+  // await page.getByRole('button', { name: 'History Log' }).click();
   // const idValue = await page
   //   .locator(`[type="checkbox"][data-readonly]`)
   //   .nth(39)

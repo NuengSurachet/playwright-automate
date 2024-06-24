@@ -1,9 +1,12 @@
+import { setSharedProjectType,getSharedProjectType } from "../../src/utils/store/projectType.store"
+
+setSharedProjectType('ModelCode',"MD01")
 const ModelMapModeltype ={
-    "ProjectCode":"T0001",      //Project Code :* 
-    "ModelCode":"F-1D",         //Model Code : *   (ห้ามซ้ำ)
-    "ModelName":"F-1D",         //Model Name : *
-    "ModelName(EN)":"F-1D",     //Model Name (EN) : *
-    "ModelType":"CM",       //Model Type : *
+    "ProjectCode":getSharedProjectType('ProjectCode'),      //Project Code :* 
+    "ModelCode":getSharedProjectType('ModelCode'),         //Model Code : *   (ห้ามซ้ำ)
+    "ModelName":getSharedProjectType('ModelCode'),         //Model Name : *
+    "ModelName(EN)":getSharedProjectType('ModelCode'),     //Model Name (EN) : *
+    "ModelType":getSharedProjectType('ModelTypeCode'),       //Model Type : *
     "ModelArea":"700.00",   //Model Area :
     "ParkingAmount":"0",    //Parking Amount :
     "Status":"Active"   // Status : * (Active ,  Inactive) 
