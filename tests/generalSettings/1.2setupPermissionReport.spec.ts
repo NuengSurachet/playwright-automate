@@ -4,16 +4,14 @@ import dataSetting from "../../data/common/TestSetting.json";
 import { fullScreenMode } from "../../src/pages/common/fullScreenMode";
 import setupPermissionReport from "../../data/generalSettings/setupPermissionReport";
 const data = dataSetting.Login;
-
+const dataLogin = dataSetting.Login;
 test("Setup Permission Report", async ({ page }) => {
-  //fullScreenMode(page);
-  // test.setTimeout(6000);
-
+  await page.goto(dataLogin.site);
   const loginPage = new LoginPage(page);
-  await loginPage.goto(data.site);
-  await loginPage.login(data.username, data.password);
-  await page.goto(data.site + "/auth/login/" + data.username + "/PPA");
-  await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click({ force: true });
+  await loginPage.goto(dataLogin.site);
+  await loginPage.login(dataLogin.username, dataLogin.password);
+  await page.waitForTimeout(3000);
+  await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click({ force: true });
   // await page.getByRole("link", { name: " Setup Permission" }).click({ force: true });
   await page.locator("#ascrail2000 div").click({ force: true });
