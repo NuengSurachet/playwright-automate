@@ -1,18 +1,18 @@
 const SetupProjects =
 [{
        "ProjectorDepartment":"Project",   //Project/Department :*      (value Project or Department)
-        "Code":"Icon-M3",                //Code : *  (ห้ามซ้ำ)
-        "Name":"Icon-M",                //Name : *
-        "NameEng":"Icon-M",             //Name Eng : *
+        "Code":"Icon-M4",                //Code : *  (ห้ามซ้ำ)
+        "Name":"Icon-M4",                //Name : *
+        "NameEng":"Icon-M4",             //Name Eng : *
         "ControlBOQ":"Yes",             //Control BOQ : *
         "StartDate":"2024-06-01",         //Start Date : *
         "EstimateCloseDate":"2025-06-01",   //Estimate Close Date :
         "ShortName":"Icon",             //Short Name :
         "Status":"Active",                 //Status : *
-        "ControlBudget":"Not Control",    //  Control Budget : *
+        "ControlBudget":"by Summary Cost Code",    //  Control Budget : *
         "LockProjectDate":"true",         //Lock Project Date :   
         "InsuranceContractYear":"10",       //Insurance Contract/Year :
-        "ProjectType":"01",             //Project Type : *
+        "ProjectType":"a",             //Project Type : *
         "JobsDetail":"Icon RPA",        //Jobs Detail :
         "Tel":"0987654327",             //Tel :
         "EMail":"icon@g.com",          //E-Mail :

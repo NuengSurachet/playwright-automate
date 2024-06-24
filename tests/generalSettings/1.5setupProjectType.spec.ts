@@ -8,12 +8,12 @@ const data = dataSetting.Login;
 
 test("setup ProjectType", async ({ page }) => {
   //fullScreenMode(page);
-  test.setTimeout(6000);
+  //test.setTimeout(6000);
 
   const loginPage = new LoginPage(page);
   await loginPage.goto(data.site);
   await loginPage.login(data.username, data.password);
-  await page.goto(data.site + "/auth/login/" + data.username + "/PPA");
+  // await page.goto(data.site + "/auth/login/" + data.username + "");
   await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
   await page.getByRole("link", { name: " Setup Project Type" }).click();
@@ -22,11 +22,12 @@ test("setup ProjectType", async ({ page }) => {
   await page.locator("#name").fill(setupProjectType.name); //js
   await page.getByRole("button", { name: " Save" }).click();
   await page.getByRole("button", { name: "OK" }).click();  
-  await page.getByPlaceholder('Type to filter...').fill('nueng');
+  // await page.getByPlaceholder('Type to filter...').fill('nueng');
   await page.getByPlaceholder('Type to filter...').click();
   await page.getByPlaceholder('Type to filter...').fill(setupProjectType.name);
   await page.getByRole('gridcell', { name: '' }).click();
-  await page.getByRole('button', { name: 'History Log' }).click();
+  await page.locator('body').click();
+  // await page.getByRole('button', { name: 'History Log' }).click();
   // const idValue = await page
   //   .locator(`[type="checkbox"][data-readonly]`)
   //   .nth(39)

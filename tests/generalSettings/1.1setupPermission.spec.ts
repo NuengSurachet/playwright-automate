@@ -5,7 +5,7 @@ const data = dataSetting.Login;
 
 test.describe("Setup Permission", () => {
   test("Test Setup Permission by user", async ({ page }) => {
-    test.setTimeout(6000);
+    // test.setTimeout(6000);
     await page.pause();
 
     const loginPage = new LoginPage(page);

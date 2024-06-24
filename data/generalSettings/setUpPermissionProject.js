@@ -1,11 +1,11 @@
 export const setupPermissionPositionData = {
     ProjectListName : [ // เพิ่มชื่อโปรเจ็กต์
-        "ICON - ERP2",
-        "Icon-M - Icon-M",
-        "aa - azure test111"
+        "Icon-M3 - Icon-M",
+        "Icon-M4 - Icon-M4",
+        "HQ_FULC - Head Office"
     ],
     DepartmentListName : [ // เพิ่มชื่อ department
-        "CEO - CEO Office",
-        "SAL - Sales"
+        "FCR003 - แผนกบุคคล",
+        "FCR004 - แผนกพัฒนาธุรกิจ"
     ]
 }
