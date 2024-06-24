@@ -6,16 +6,14 @@ import setupPermissionReport from "../../data/generalSettings/setupPermissionRep
 import { setupProjectType } from "../../data/generalSettings/setupProjectType";
 import { setupModelType } from "../../data/generalSettings/setupModelType";
 const data = dataSetting.Login;
-
+const dataLogin = dataSetting.Login;
 test("Setup Model Type", async ({ page }) => {
-  //fullScreenMode(page);
-  test.setTimeout(6000);
-
-  const loginPage = new LoginPage(page);
-  await loginPage.goto(data.site);
-  await loginPage.login(data.username, data.password);
-  await page.goto(data.site + "/auth/login/" + data.username + "/PPA");
-  await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
+  //fullScreenMode(page);await page.goto(dataLogin.site);
+    const loginPage = new LoginPage(page);
+    await loginPage.goto(dataLogin.site);
+    await loginPage.login(dataLogin.username, dataLogin.password);
+    await page.waitForTimeout(3000);
+    await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
   await page.getByRole("link", { name: " Setup Model Type" }).click();
   await page.getByRole("button", { name: " New" }).click();
