@@ -5,26 +5,12 @@ const data = dataSetting.Login;
 
 test.describe("Setup Permission", () => {
   test("Test Setup Permission by user", async ({ page }) => {
-    test.setTimeout(600000);
+    test.setTimeout(6000);
     await page.pause();
 
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
     await loginPage.login(data.username, data.password);
-
-    // await page.goto("https://maison-cm-test.iconframework.com/");
-    // await page.getByPlaceholder("Username").click({ force: true });
-    // await page.getByPlaceholder("Username").fill("icon002", { force: true });
-    // await page.getByPlaceholder("Password").click({ force: true });
-    // await page.getByPlaceholder("Password").fill("123456", { force: true });
-    // await page.getByPlaceholder("Password").press("Enter");
-    // await page.waitForSelector(".thumbnail");
-    // await page.locator(".thumbnail").first().click({ force: true });
-    // await page.locator(".caption-overflow > span").click({ force: true });
-    // await expect(page).not.toHaveURL(
-    //   "https://maison-cm-test.iconframework.com/auth/companylist"
-    // );
-    // await page.waitForLoadState();
     await page
       .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
       .click({ force: true });
@@ -912,6 +898,8 @@ if (checkbox86) {
       .check();
     await page.waitForLoadState();
   }
+
+ 
 }
 
 
@@ -932,4 +920,6 @@ if (checkbox86) {
 
 
   });
+
+ 
 });
