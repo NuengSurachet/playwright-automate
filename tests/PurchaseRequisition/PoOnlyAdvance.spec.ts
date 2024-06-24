@@ -15,7 +15,7 @@ describe("ระบบจัดการในสำนักงาน", () => {
     //   window.resizeTo(screen.width, screen.height);
     // });
 
-    test.setTimeout(600000);
+    // test.setTimeout(600000);
     await page.goto("https://std-cm-test.iconcm.com/auth/login/icon001/ICON//");
     await page
       .getByRole("link", { name: "ระบบจัดการในสำนักงาน" })
