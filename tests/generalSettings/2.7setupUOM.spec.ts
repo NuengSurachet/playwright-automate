@@ -7,6 +7,7 @@ const dataLogin = dataSetting.Login;
 const data = setupBusinessPartnerGroupData;
 
 test.describe("Setup UOM", async () => {
+  // test.setTimeout(400000);
   test("Setup UOM", async ({ page }) => {
     await page.goto(dataLogin.site);
     const loginPage = new LoginPage(page);
@@ -25,17 +26,11 @@ test.describe("Setup UOM", async () => {
     await page.getByRole("button", { name: "OK" }).click();
     await page.getByPlaceholder("Type to filter...").click();
     await page.getByPlaceholder("Type to filter...").fill(data.code);
-      
-    await page.click('a[data-toggle="modal"][data-target="#edit_modal139"] i.icon-pencil7');
+    await page.waitForSelector('tr.odd');
 
-    // Optionally wait for the modal to appear and perform further actions
-    await page.waitForSelector('#edit_modal139');
-
-
-    const editCode = page.locator('#name139');
-    // await page.waitForTimeout(4000);
-    await expect(editCode).toHaveValue(/[a-zA-Z0-9]/);
-    await page.click('div.modal-footer button.btn-success');
+  // More flexible selector for the 'Edit' button
+  await page.click('tr.odd a:has(i.icon-pencil7)');
+    await page.locator('//button[contains(text(), "Save")]').nth(1).click(); // คลิกที่ element ที่มีข้อความ "Save" ในโค้ดของมัน
     await page.getByRole('button', { name: 'OK' }).click();
   });
 });

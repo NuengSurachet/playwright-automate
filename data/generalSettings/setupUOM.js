@@ -1,4 +1,4 @@
 export const setupBusinessPartnerGroupData = {
-    code : "037",
+    code : "040",
     uom : "งานแบบ",
 }
