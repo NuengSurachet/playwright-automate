@@ -34,18 +34,31 @@ export class LoginPage {
     await this.page
       .getByRole("button", { name: "Login" })
       .click({ force: true });
-
-    try {
-      const img = await this.page.locator('//div[@class="thumb"]//img');
-      const icon = await this.page.locator(
-        '//i[@class="glyphicon glyphicon-log-in"]'
-      );
-      await img.hover();
-      await icon.hover({ force: true });
-      await icon.click({ force: true });
-    } catch (error) {
-      await this.page.waitForLoadState();
-    }
+      let retries =  5;
+      let attempt = 0;
+      let delay = 1000;
+      while (attempt < retries) {
+        try {
+          const img = await this.page.locator('div[class="col-lg-3"]');
+          const icon = await this.page.locator('//i[@class="glyphicon glyphicon-log-in"]');
+          await img.hover();
+          await icon.click({ force: true });
+          // If no error, break out of the loop
+          break;
+        } catch (error) {
+          console.error(`Attempt ${attempt + 1} failed: ${error.message}`);
+          attempt++;
+          if (attempt < retries) {
+            // Wait for a specified delay before retrying
+            await new Promise(resolve => setTimeout(resolve, delay));
+            // Ensure the page is in a loaded state before retrying
+            await this.page.waitForLoadState();
+          } else {
+            console.error('All attempts failed.');
+            throw error;
+          }
+        }
+      }
   }
 
   async loginByUserType(userType: string): Promise<void> {
