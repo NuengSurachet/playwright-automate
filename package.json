@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:single": "playwright test --workers 1",
-    "test:parallel": "playwright test",
+    "clean": "rimraf test-results && rimraf playwright-report",
+    "test:single": "npm run clean && playwright test --headed --workers 1",
+    "test:parallel": "npm run clean && playwright test --headed",
     "test:ui": "playwright test --ui",
     "report": "playwright show-report"
   },
@@ -16,7 +17,8 @@
     "@faker-js/faker": "^8.4.1",
     "@playwright/test": "^1.44.1",
     "@types/node": "^20.14.2",
-    "@types/xlsx": "^0.0.36"
+    "@types/xlsx": "^0.0.36",
+    "rimraf": "^5.0.7"
   },
   "dependencies": {
     "xlsx": "^0.18.5"
