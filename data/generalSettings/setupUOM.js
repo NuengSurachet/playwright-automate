@@ -1,4 +1,4 @@
 export const setupBusinessPartnerGroupData = {
-    code : "037",
+    code : "042", //  ห้ามซ้ำ
     uom : "งานแบบ",
 }
