@@ -30,14 +30,15 @@ test('Test Add Budget Group', async () => {
   await page.locator('#bg_costcontrol').fill('1,000,0000');
   // await page.locator('#bg_groupcontrol').selectOption('N');
   await page.locator('#bg_groupcontrol').selectOption('Y');
-  await page.locator('select[name="bg_permission"]').selectOption('PJ01');
+  await page.selectOption('select[name="bg_permission"]', { index: 1 });
+  // await page.locator('select[name="bg_permission"]').selectOption('PJ01');
 
   // await page.locator('select[name="status"]').selectOption('N');
   await page.locator('select[name="status"]').selectOption('Y');
   
 
-  await page.locator('#date_start').fill('2024-06-01');
-  await page.locator('#date_end').fill('2024-06-01');
+  await page.locator('input[name="date_start"]').fill('2024-06-01');
+  await page.locator('input[name="date_end"]').fill('2024-06-01');
 
 
   // if(true)
@@ -47,7 +48,8 @@ test('Test Add Budget Group', async () => {
 // if(true)
   // await page.locator('#bg_group_type_allocation').selectOption('H');
  //else  
- await page.locator('#bg_group_type_allocation').selectOption('D');
+  //await page.locator('#bg_group_type_allocation').selectOption('D');
+  await page.selectOption('#bg_group_type_allocation', { index: 1 });
 
   await page.locator('#freezelimit').click();
   await page.locator('#freezelimit').press('ControlOrMeta+a');
@@ -71,10 +73,20 @@ test('Test Cost Center', async()=>{
   await page.getByRole('link', { name: 'SELECT' }).click();
   await page.locator('#group_lv_modal').click();
   await page.getByText('ADD Rows').click();
-  await page.locator('#search').click();
-  await page.locator('#search').fill('แผนกก่อสร้าง');
-  await page.getByRole('button', { name: '' }).click();  
-  await page.locator('//*[@id="modal_costii"]/div[3]/div/table/tbody/tr/td[5]/a').click();
+  try {
+    await page.locator('input[type="search"]').click();
+    await page.locator('input[type="search"]').fill('ค่าใช้จ่ายในการบริหาร');
+    await page.locator('//*[@id="modal_costii"]/div[3]/div/table/tbody/tr/td[5]/a').click();
+  } catch (error) {
+   
+   await page.locator('input[name="search"]').click();
+   await page.locator('input[name="search"]').fill('แผนกก่อสร้าง');
+   await page.getByRole('button', { name: '' }).click();
+    await page.locator('#get_search').click({force: true});  
+    await page.locator('//*[@id="modal_costii"]/div[3]/div/table/tbody/tr/td[5]/a').click();
+    
+  }
+
   await page.locator('#costcode').getByRole('button', { name: 'Close' }).click();
   await page.getByText('Save Group', { exact: true }).click();
 
@@ -83,12 +95,18 @@ test('Test Cost Center', async()=>{
 
   await page.getByTitle('Add Cost Center').click();
   await page.getByText('ADD Rows').click();
-  await page.locator('#search').click();
-  await page.locator('#search').fill('แผนกจัดซื้อ');
-  await page.getByRole('button', { name: '' }).click();
-  await page.locator('//*[@id="modal_costii"]/div[3]/div/table/tbody/tr/td[5]/a').click();
-  // await page.locator('#costcode').getByRole('button', { name: 'Close' }).click();
-  // await page.getByRole('gridcell', { name: 'SELECT' }).first().click();
+  try {
+    await page.locator('input[type="search"]').click();
+    await page.locator('input[type="search"]').fill('ค่าใช้จ่ายในการบริหาร');
+    await page.locator('//*[@id="modal_costii"]/div[3]/div/table/tbody/tr/td[5]/a').click();
+  } catch (error) {
+   
+    await page.locator('input[name="search"]').click().fill('ฝ่ายบริหาร')
+    await page.locator('#get_search').click({force: true});  
+    await page.locator('//*[@id="modal_costii"]/div[3]/div/table/tbody/tr/td[5]/a').click();
+    
+  }
+
   await page.locator('#costcode').getByRole('button', { name: 'Close' }).click();
   await page.getByText('Save LV 1').click();
   await page.getByRole('button', { name: 'OK' }).click();
@@ -96,3 +114,5 @@ test('Test Cost Center', async()=>{
 
 })
 });
+
+

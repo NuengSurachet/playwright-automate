@@ -29,10 +29,7 @@ test("Setup Model Type", async ({ page }) => {
   await page.locator("#block_remarks").fill(setupBlockFloor.remarks);
   await page.getByRole("button", { name: " Save" }).click();
   await page.getByRole("button", { name: "OK" }).click();
-  await page
-    .getByRole("row", { name: "icon001 icon001 Active  " })
-    .getByRole("link")
-    .click();
+
   //   .locator(`[type="checkbox"][data-readonly]`)
   //   .nth(39)
   //   .getAttribute("id");

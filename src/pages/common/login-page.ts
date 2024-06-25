@@ -36,10 +36,10 @@ export class LoginPage {
       .click({ force: true });
 
     try {
-      const img = await this.page.locator('//div[@class="thumb"]//img');
+      const img = await this.page.locator('//div[@class="thumb"]//img').nth(1)
       const icon = await this.page.locator(
         '//i[@class="glyphicon glyphicon-log-in"]'
-      );
+      ).nth(1)
       await img.hover();
       await icon.hover({ force: true });
       await icon.click({ force: true });
@@ -73,9 +73,9 @@ export class LoginPage {
       await this.page.waitForLoadState();
     } catch (error) {
       await this.page.waitForSelector(".thumbnail");
-      await this.page.locator(".thumbnail").first().click({ force: true });
+      await this.page.locator(".thumbnail").nth(1).click({ force: true });
       await this.page
-        .locator(".caption-overflow > span")
+        .locator(".caption-overflow > span").nth(1)
         .click({ force: true });
       await this.page.waitForLoadState();
     }

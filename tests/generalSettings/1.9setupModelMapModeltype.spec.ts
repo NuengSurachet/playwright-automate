@@ -26,10 +26,10 @@ test.describe("Setup Project", () => {
     await page
       .getByRole("link", { name: " Setup Model", exact: true })
       .click();
-    await page.getByRole("searchbox", { name: "Filter: " }).click();
-    await page.getByRole("searchbox", { name: "Filter: " }).fill(ModelMapModeltype.ProjectCode);
-    await page.getByRole("searchbox", { name: "Filter: " }).press("Enter");
-    await page.getByRole("link", { name: " Select" }).click();
+      await page.locator('input[type="search"]').first().click();
+      await page.locator('input[type="search"]').first().fill(ModelMapModeltype.ProjectCode);
+      await page.getByRole("searchbox", { name: "Filter: " }).press("Enter");
+      await page.getByRole("link", { name: " Select" }).click();
       await page.getByRole("button", { name: " New" }).click();
       await page.locator("#model_code").click();
       await page.locator("#model_code").fill(ModelMapModeltype.ModelCode);

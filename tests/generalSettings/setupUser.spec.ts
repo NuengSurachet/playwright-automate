@@ -15,13 +15,15 @@ test('test', async ({ page }) => {
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
   await page.getByRole('link', { name: ' Setup User' }).click();
   await page.locator('#ccode_new').click();
-  await page.locator('#ccode_new').fill('test111');
+  await page.locator('#ccode_new').fill('tester2');
   await page.getByPlaceholder('First Name - Last Name').click();
   await page.getByPlaceholder('First Name - Last Name').fill(setupUser.firstName);
   await page.getByRole('button', { name: '' }).click();
   await page.getByLabel('Change Password').getByLabel('Filter:').click();
-  await page.getByLabel('Change Password').getByLabel('Filter:').fill('ceo');
-  await page.locator(`[class="select3 btn btn-xs btn-block btn-primary"]`).click();
+  await page.getByLabel('Change Password').getByLabel('Filter:').fill('DCEO');
+  
+  await page.locator("button").filter({hasText:"SELECT"}).click();
+
   await page.getByPlaceholder('E-Mail').click(); 
   await page.getByPlaceholder('E-Mail').fill(setupUser.email);
   await page.getByPlaceholder('-999-9999').click();
@@ -33,5 +35,5 @@ test('test', async ({ page }) => {
   await page.getByRole('textbox', { name: 'New Password' }).fill(setupUser.password);
   await page.locator('#license_S').check();
   await page.getByRole('button', { name: ' Save' }).click();
-  await page.getByRole('button', { name: 'OK' }).click();
+  //await page.getByRole('button', { name: 'OK' }).click();
 });

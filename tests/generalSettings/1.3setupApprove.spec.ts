@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test";
-import { LoginPage } from "../../src/pages/common/login-page.js"
-import dataSetting from "../../data/common/TestSetting.json"
+import { LoginPage } from "../../src/pages/common/login-page.js";
+import dataSetting from "../../data/common/TestSetting.json";
 import SetupApprove from "../../data/generalSettings/setupApprove.js";
-
+import {setupUserApprove} from '../../src/pages/setapprove-page.js';
 const data = dataSetting.Login;
 const setGroupData = SetupApprove[0]
 
@@ -18,17 +18,11 @@ test.describe("Setup Approve", () => {
 
   test("Test Setup Approve BOM", async () => {
     // //test.setTimeout(6000);
-    await page.pause();
-    await page.getByPlaceholder("Username").click({ force: true });
-    await page.getByPlaceholder("Username").fill(data.username, { force: true });
-    await page.getByPlaceholder("Password").click({ force: true });
-    await page.getByPlaceholder("Password").fill(data.password, { force: true });
-    await page.getByPlaceholder("Password").press("Enter");
-    await page.waitForSelector(".thumbnail");
-    await page.locator(".thumbnail").first().click({ force: true });
-    await page.locator(".caption-overflow > span").click({ force: true });
-    await expect(page).not.toHaveURL(data.site+"auth/companylist");
-    await page.waitForLoadState();
+     await page.goto(data.site);
+  const loginPage = new LoginPage(page);
+  await loginPage.goto(data.site);
+  await loginPage.login(data.username, data.password);
+  await page.waitForTimeout(3000);
     await page
       .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
       .click({ force: true });
@@ -61,8 +55,10 @@ test.describe("Setup Approve", () => {
     await page.getByText("Save Group").click({ force: true });
     //Save Group
 
-await page.locator('a').filter({ hasText: 'BOM' }).click();
+    await page.locator('a').filter({ hasText: 'BOM' }).click();
+    setupUserApprove(page);
 
+/*
 await page.getByLabel('Filter:').click();
 await page.getByLabel('Filter:').fill(setGroupData.groupName);
 await page.getByLabel('Filter:').press('Enter');
@@ -85,17 +81,17 @@ const Datanotfound = await page.evaluate(() => {
      await page.waitForLoadState();
      await page.getByLabel('Search:').click();
      await page.getByLabel('Search:').fill(setGroupData.user);
-     await page.getByLabel('Search:').press('Enter');
-     await page.getByLabel('Search:').press('Tab');
-     await page.getByLabel('No.: activate to sort column').press('Tab');
-     await page.getByLabel('Project/Department: activate').press('Tab');
-     await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
+    //  await page.getByLabel('Search:').press('Enter');
+    //  await page.getByLabel('Search:').press('Tab');
+    //  await page.getByLabel('No.: activate to sort column').press('Tab');
+    //  await page.getByLabel('Project/Department: activate').press('Tab');
+    //  await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
      await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
      await page.getByText('Save', { exact: true }).click();
      await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
      await page.getByRole('button', { name: 'OK' }).click({ force: true });
  }
-
+*/
    
   currentUrl =  page.url();
   });
@@ -112,20 +108,14 @@ const Datanotfound = await page.evaluate(() => {
     await page
       .getByRole("link", { name: "Setup Approve" })
       .click({ force: true });
-    await page.locator("a").filter({ hasText: "BOQ" }).click({ force: true });
-    await page.locator("a").filter({ hasText: "BOQ" }).click({ force: true });
-    // await page.getByRole("heading", { name: "BOQ ON / OFF" }).click({ force: true });
+
+    await page.waitForTimeout(3000);
+    await page.waitForSelector(`[onclick="choose('1')"]`)
+    await page.click(`[onclick="choose('1')"]`)
+
     await page.getByLabel("Filter:").click({ force: true });
     await page.getByLabel("Filter:").fill(setGroupData.groupName);
     await page.getByLabel("Filter:").press("Enter");
-    // // Use evaluate to get the text content of the element
-    // const Datanotfound = await page.evaluate(() => {
-    //   const element = document.querySelector('td.dataTables_empty');
-    //   return element ? element.textContent : null;
-    // });
-
-    //  // Check the text content
-    //  if (Datanotfound !== 'No matching records found') {
       
     await page.getByText("Add Group").click({ force: true });
     await page.locator("#groupname").click({ force: true });
@@ -134,12 +124,17 @@ const Datanotfound = await page.evaluate(() => {
     await page.locator("#remark").fill(setGroupData.remark);
     await page.locator("#department").selectOption(setGroupData.department);
     await page.getByText("Save Group").click({ force: true });
-//Save group
-await page.click(`[onclick="choose('1')"]`)
+    //Save group
+    await page.click(`[onclick="choose('1')"]`)
+
+    setupUserApprove(page);
+
+
+
     // await page.locator("a").filter({ hasText: "BOQ (1)" }).click({ force: true });
 
     // await page.locator("a").filter({ hasText: "BOQ (1)" }).click({ force: true });
-    await page.getByLabel("Filter:").click({ force: true });
+   /* await page.getByLabel("Filter:").click({ force: true });
     await page.getByLabel("Filter:").click({ force: true });
     await page.getByLabel("Filter:").fill(setGroupData.groupName);
     await page.getByLabel("Filter:").press("Enter");
@@ -155,15 +150,15 @@ await page.click(`[onclick="choose('1')"]`)
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
       await page.getByLabel('Search:').fill(setGroupData.user);
-      await page.getByLabel('Search:').press('Tab');
-      await page.getByLabel('No.: activate to sort column').press('Tab');
-      await page.getByLabel('Project/Department: activate').press('Tab');
-      await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
+     // await page.getByLabel('Search:').press('Tab');
+      // await page.getByLabel('No.: activate to sort column').press('Tab');
+      // await page.getByLabel('Project/Department: activate').press('Tab');
+      // await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
       await page.getByRole('button', { name: 'SELECT' }).click({ force: true }); 
       await page.getByText('Save', { exact: true }).click();
      await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
      await page.getByRole('button', { name: 'OK' }).click({ force: true });
-
+*/
   //   await page.click(`[id="addjobtitle"]`)
   //   //await page.locator("#addjobtitle").click({ force: true });
   //   await page.locator('//div[@class="input-group-btn"]').first().click({ force: true });
@@ -205,6 +200,10 @@ await page.click(`[onclick="choose('1')"]`)
 
       await page.locator('a').filter({ hasText: 'Cost Control (2)' }).click();
       //await page.locator('a').filter({ hasText: 'Cost Control (2)' }).click({ force: true });
+     
+      setupUserApprove(page);
+
+    /*
       await page.getByLabel('Filter:').click({ force: true });
       await page.getByLabel('Filter:').fill(setGroupData.groupName);
       await page.getByLabel('Filter:').press('Enter');
@@ -216,15 +215,16 @@ await page.click(`[onclick="choose('1')"]`)
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
       await page.getByLabel('Search:').fill(setGroupData.user);
-      await page.getByLabel('Search:').press('Tab');
-      await page.getByLabel('No.: activate to sort column').press('Tab');
-      await page.getByLabel('Project/Department: activate').press('Tab');
-      await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
+      // await page.getByLabel('Search:').press('Tab');
+      // await page.getByLabel('No.: activate to sort column').press('Tab');
+      // await page.getByLabel('Project/Department: activate').press('Tab');
+      // await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
       await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
       
       await page.getByText('Save', { exact: true }).click();
      await page.getByRole('heading', { name: 'Save Completed !' }).click({ force: true });
      await page.getByRole('button', { name: 'OK' }).click({ force: true });
+     */
   });
 
 
@@ -270,10 +270,10 @@ await page.click(`[onclick="choose('1')"]`)
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
       await page.getByLabel('Search:').fill(setGroupData.user);
-      await page.getByLabel('Search:').press('Tab');
-      await page.getByLabel('No.: activate to sort column').press('Tab');
-      await page.getByLabel('Project/Department: activate').press('Tab');
-      await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
+      // await page.getByLabel('Search:').press('Tab');
+      // await page.getByLabel('No.: activate to sort column').press('Tab');
+      // await page.getByLabel('Project/Department: activate').press('Tab');
+      // await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
       await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
       
       await page.getByText('Save', { exact: true }).click();
@@ -323,10 +323,10 @@ await page.click(`[onclick="choose('1')"]`)
       await page.waitForLoadState();      
       await page.getByLabel('Search:').click({ force: true });
       await page.getByLabel('Search:').fill(setGroupData.user);
-      await page.getByLabel('Search:').press('Tab');
-      await page.getByLabel('No.: activate to sort column').press('Tab');
-      await page.getByLabel('Project/Department: activate').press('Tab');
-      await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
+      // await page.getByLabel('Search:').press('Tab');
+      // await page.getByLabel('No.: activate to sort column').press('Tab');
+      // await page.getByLabel('Project/Department: activate').press('Tab');
+      // await page.getByRole('row', { name: 'No.: activate to sort column' }).getByLabel('Active: activate to sort').press('Tab');
       await page.getByRole('button', { name: 'SELECT' }).click({ force: true });
       
       await page.getByText('Save', { exact: true }).click();
@@ -983,5 +983,8 @@ await page.click(`[onclick="choose('1')"]`)
 
 
 });
+
+
+
 
      
