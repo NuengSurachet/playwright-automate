@@ -20,7 +20,7 @@ test("Setup Permission Report", async ({ page }) => {
     .getByRole("link", { name: "Setup Permission" })
     .click({ force: true });
   await page.waitForLoadState();
-  await page.locator('a.button.btn.btn-default.btn-block.btn-float.btn-float-lg').click()
+  await page.locator('i.icon-magazine').click()
   //await page.getByRole("link", { name: " Report" }).click({ force: true });
   await page.getByRole("link", { name: "Role Member Permission" }).click({ force: true });
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click({ force: true });
@@ -42,14 +42,15 @@ test("Setup Permission Report", async ({ page }) => {
   await page.click(`(//i[@class='icon-user-check'])[1]`);
 
   const idValue = await page
-    .locator(`[type="checkbox"][data-readonly]`)
-    .nth(39)
-    .getAttribute("id");
+    .locator(`[type="checkbox"][data-readonly]`).isChecked()
+    // .nth(39)
+    // .getAttribute("id");
   // await page.locator("#ic_chk609").check();
   // แสดงค่า id ที่ได้
   console.log("id", idValue);
-  await page.locator(`#${idValue}`).check();
-
-  await page.getByRole("button", { name: " Close" }).click();
+  //await page.locator(`#${idValue}`).check();
+  if(!idValue)
+  {await page.locator(`[type="checkbox"][data-readonly]`).check()}
+  await page.locator('i.icon-close2').click();
 });
 

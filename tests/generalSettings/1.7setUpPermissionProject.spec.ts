@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 import dataSetting from "../../data/common/TestSetting.json"
 import { LoginPage } from "../../src/pages/common/login-page.js"
-import { setupPermissionPositionData } from "../../data/generalSettings/setupPermissionProject.js";
+import { setupPermissionPositionData } from "../../data/generalSettings/setUpPermissionProject.js";
 
 const dataLogin = dataSetting.Login;
 const data = setupPermissionPositionData;
@@ -28,11 +28,11 @@ test.describe("Setup Position", async () => {
         const page1Promise = page.waitForEvent('popup');
         await page.getByTitle('Company').click();
         const page1 = await page1Promise;
-        await page1.getByRole('button', { name: 'Project' }).click();
+        await page1.getByRole('button', { name: 'Project' }).nth(1).click();
         for (const projectName of data.ProjectListName) {
             await page1.getByLabel(projectName).click();
         }
-        await page1.getByRole('button', { name: 'Department' }).click();
+        await page1.getByRole('button', { name: 'Department' }).nth(1).click();
         for (const companyName of data.DepartmentListName) {
             await page1.getByLabel(companyName).click();
         }

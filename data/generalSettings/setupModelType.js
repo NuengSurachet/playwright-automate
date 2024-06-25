@@ -6,6 +6,6 @@ export const setupModelType = {
     modelTypeName: getSharedProjectType('ModelTypeCode')+"-Test",//ห้ามซ้ำ ใส่ช่องหัวข้อ modelTypeName
     modelTypeNameEN: getSharedProjectType('ModelTypeCode')+"-Test",//ห้ามซ้ำ ใส่ช่องหัวข้อ modelTypeNameEN
     modelTypeShortName: getSharedProjectType('ModelTypeCode')+"-Test",//ห้ามซ้ำ ใส่ช่องหัวข้อ modelTypeShortName
-    ProjectType: getSharedProjectType('ProjectType'), //ใส่ชื่ Project Type ให้ตรงกันกับ Project Type ทีที่ต้องการเลือก
+    ProjectType: "pt1", //ใส่ชื่ Project Type ให้ตรงกันกับ Project Type ทีที่ต้องการเลือก
 }
 

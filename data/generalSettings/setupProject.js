@@ -1,6 +1,7 @@
 import { setSharedProjectType,getSharedProjectType } from "../../src/utils/store/projectType.store";
 
-// setSharedProjectType('ProjectCode',"pc1");
+ setSharedProjectType('ProjectCode',"pc2");
+
 const SetupProjects =
 [{
        "ProjectorDepartment":"Project",   //Project/Department :*      (value Project or Department)
@@ -15,7 +16,7 @@ const SetupProjects =
         "ControlBudget":"by Summary Cost Code",    //  Control Budget : *
         "LockProjectDate":"false",         //Lock Project Date :     (true คือจะใช้งานไม่ได้ชั่วคราว)
         "InsuranceContractYear":"10",       //Insurance Contract/Year :
-        "ProjectType":getSharedProjectType('ProjectType'),             //Project Type : *
+        "ProjectType":"pt1",             //Project Type : *
         "JobsDetail":"Icon RPA",        //Jobs Detail :
         "Tel":"0987654327",             //Tel :
         "EMail":"icon@g.com",          //E-Mail :

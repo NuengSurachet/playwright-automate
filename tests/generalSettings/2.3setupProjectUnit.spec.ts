@@ -76,7 +76,8 @@ test.describe("Setup Project Unit", () => {
         .locator("body > div.sweet-alert.showSweetAlert.visible > h2")
         .textContent();
       console.log(res);
-      if (res === "Update SAP Complete") {
+      const containsComplete = res?.includes("Complete");
+      if (containsComplete) {
         await page
           .locator(
             "body > div.sweet-alert.showSweetAlert.visible > div.sa-button-container > div > button"
