@@ -54,7 +54,7 @@ export default defineConfig({
     // viewport: { width: 1280, height: 720 },
 
      launchOptions:{
-      slowMo:100  //ช้าลง
+      slowMo:500  //ช้าลง
      }
 
    
