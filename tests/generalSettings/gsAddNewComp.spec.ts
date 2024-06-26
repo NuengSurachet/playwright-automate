@@ -101,9 +101,7 @@ test.describe.skip("Setup Company", () => {
     await loginPage.goto(data.site);
     await loginPage.login(data.username, data.password);
     await page.waitForLoadState();
-    await page
-      .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
-      .click({ force: true });
+    await page.locator(`[class="panel-title"]`).nth(0).click()
     await page
       .locator("a")
       .filter({ hasText: "Genaral Settings" })
