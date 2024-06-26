@@ -23,7 +23,6 @@ test.describe("Genaral Settings", async () => {
         await page.getByRole('link', { name: ' Select' }).click();
         await page.getByRole('button', { name: ' Add' }).click();
         await page.locator('#phase_name').click();
-        await page.locator('#phase_name').press('CapsLock');
         await page.locator('#phase_name').fill(data.phaseCode);
         await page.locator('#phase_remarks').fill(data.phaseName);
         await page.locator('#PhaseNameEng').fill(data.phaseNameEN);
