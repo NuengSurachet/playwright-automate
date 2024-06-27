@@ -1,5 +1,6 @@
 import { expect, Page } from "@playwright/test";
 import dataSetting from "../../../data/common/TestSetting.json";
+import changlanguage from "../../utils/function/changlanguage.spec";
 
 // สร้างคลาส LoginPage เพื่อเก็บเมทอดและสมบัติที่เกี่ยวข้องกับหน้า Login
 export class LoginPage {
@@ -36,13 +37,14 @@ export class LoginPage {
       .click({ force: true });
 
     try {
-      const img = await this.page.locator('//div[@class="thumb"]//img');
+      const img = await this.page.locator('//div[@class="thumb"]//img').nth(11);
       const icon = await this.page.locator(
         '//i[@class="glyphicon glyphicon-log-in"]'
-      );
+      ).nth(11);
       await img.hover();
       await icon.hover({ force: true });
       await icon.click({ force: true });
+    
     } catch (error) {
       await this.page.waitForLoadState();
     }

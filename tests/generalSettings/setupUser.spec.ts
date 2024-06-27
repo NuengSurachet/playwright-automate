@@ -11,7 +11,7 @@ test('test', async ({ page }) => {
   await loginPage.goto(data.site);
   await loginPage.login(data.username, data.password);
  
-  await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
+  await page.locator(`[class="panel-title"]`).nth(0).click()
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
   await page.getByRole('link', { name: ' Setup User' }).click();
   await page.locator('#ccode_new').click();

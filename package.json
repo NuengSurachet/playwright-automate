@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:single": "playwright test --workers 1",
+    "test:single:A": "set TEST_ENV=A && npx playwright test --workers 1 --headed",
+    "test:single:B": "set TEST_ENV=B && npx playwright test --workers 1 --headed",
     "test:parallel": "playwright test",
     "test:ui": "playwright test --ui",
     "report": "playwright show-report"
@@ -19,6 +20,7 @@
     "@types/xlsx": "^0.0.36"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "xlsx": "^0.18.5"
   }
 }

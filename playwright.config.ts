@@ -10,6 +10,7 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  globalSetup: require.resolve('./global-setup.ts'),
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -29,7 +30,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'http://127.0.0.1:3000',
 
 
 
@@ -53,9 +54,9 @@ export default defineConfig({
       /* Set the default viewport size */
     // viewport: { width: 1280, height: 720 },
 
-     launchOptions:{
-      slowMo:500  //ช้าลง
-     }
+    //  launchOptions:{
+    //   slowMo:1000  //ช้าลง
+    //  }
 
    
   },
@@ -68,10 +69,10 @@ export default defineConfig({
     }
      ,
 
-     {
-       name: 'firefox',
-     use: { ...devices['Desktop Firefox'] },
-     }
+    //  {
+    //    name: 'firefox',
+    //  use: { ...devices['Desktop Firefox'] },
+    //  }
     //  ,
 
     //  {

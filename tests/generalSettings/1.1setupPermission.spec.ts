@@ -11,16 +11,14 @@ test.describe("Setup Permission", () => {
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
     await loginPage.login(data.username, data.password);
-    await page
-      .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
-      .click({ force: true });
+    await page.locator(`[class="panel-title"]`).nth(0).click();
     await expect(page).not.toHaveURL(data.site + "panel/office");
     await page.waitForLoadState();
     await page.locator("#btn_mg").click({ force: true });
     await page.waitForLoadState();
     // Scroll down
 
-    await page.locator("#ascrail2000 div").click({ force: true });
+    await page.click(`[id="d_77"]`)
     await page.mouse.wheel(0, 500);
     await page
       .getByRole("link", { name: "Setup Permission" })
@@ -458,468 +456,444 @@ test.describe("Setup Permission", () => {
       }
     }
 
-/////////////////////////////////////////////////////////
-const checkbox51 = await page.$(
-  'input[type="checkbox"][module_id_domain="6"][event_type="read"]'
-);
-if (checkbox51) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox51) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox51.hasAttribute("disabled");
-  }, checkbox51);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="6"][event_type="read"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox52 = await page.$(
-  'input[type="checkbox"][module_id_domain="6"][event_type="new"]'
-);
-if (checkbox52) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox52) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox52.hasAttribute("disabled");
-  }, checkbox52);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="6"][event_type="new"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox53 = await page.$(
-  'input[type="checkbox"][module_id_domain="6"][event_type="edit"]'
-);
-if (checkbox53) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox53) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox53.hasAttribute("disabled");
-  }, checkbox53);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="6"][event_type="edit"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox54 = await page.$(
-  'input[type="checkbox"][module_id_domain="6"][event_type="del"]'
-);
-if (checkbox54) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox54) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox54.hasAttribute("disabled");
-  }, checkbox54);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="6"][event_type="del"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox55 = await page.$(
-  'input[type="checkbox"][module_id_domain="6"][event_type="print"]'
-);
-if (checkbox55) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox55) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox55.hasAttribute("disabled");
-  }, checkbox55);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="6"][event_type="print"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox56 = await page.$(
-  'input[type="checkbox"][module_id_domain="6"][event_type="reject"]'
-);
-if (checkbox56) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox56) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox56.hasAttribute("disabled");
-  }, checkbox56);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="6"][event_type="reject"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
+    /////////////////////////////////////////////////////////
+    const checkbox51 = await page.$(
+      'input[type="checkbox"][module_id_domain="6"][event_type="read"]'
+    );
+    if (checkbox51) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox51) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox51.hasAttribute("disabled");
+      }, checkbox51);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="6"][event_type="read"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox52 = await page.$(
+      'input[type="checkbox"][module_id_domain="6"][event_type="new"]'
+    );
+    if (checkbox52) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox52) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox52.hasAttribute("disabled");
+      }, checkbox52);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="6"][event_type="new"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox53 = await page.$(
+      'input[type="checkbox"][module_id_domain="6"][event_type="edit"]'
+    );
+    if (checkbox53) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox53) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox53.hasAttribute("disabled");
+      }, checkbox53);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="6"][event_type="edit"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox54 = await page.$(
+      'input[type="checkbox"][module_id_domain="6"][event_type="del"]'
+    );
+    if (checkbox54) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox54) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox54.hasAttribute("disabled");
+      }, checkbox54);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="6"][event_type="del"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox55 = await page.$(
+      'input[type="checkbox"][module_id_domain="6"][event_type="print"]'
+    );
+    if (checkbox55) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox55) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox55.hasAttribute("disabled");
+      }, checkbox55);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="6"][event_type="print"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox56 = await page.$(
+      'input[type="checkbox"][module_id_domain="6"][event_type="reject"]'
+    );
+    if (checkbox56) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox56) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox56.hasAttribute("disabled");
+      }, checkbox56);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="6"][event_type="reject"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
 
-/////////////////////////////////////////////////////////
-const checkbox61 = await page.$(
-  'input[type="checkbox"][module_id_domain="7"][event_type="read"]'
-);
-if (checkbox61) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox61) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox61.hasAttribute("disabled");
-  }, checkbox61);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="7"][event_type="read"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox62 = await page.$(
-  'input[type="checkbox"][module_id_domain="7"][event_type="new"]'
-);
-if (checkbox62) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox62) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox62.hasAttribute("disabled");
-  }, checkbox62);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="7"][event_type="new"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox63 = await page.$(
-  'input[type="checkbox"][module_id_domain="7"][event_type="edit"]'
-);
-if (checkbox63) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox63) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox63.hasAttribute("disabled");
-  }, checkbox63);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="7"][event_type="edit"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox64 = await page.$(
-  'input[type="checkbox"][module_id_domain="7"][event_type="del"]'
-);
-if (checkbox64) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox64) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox64.hasAttribute("disabled");
-  }, checkbox64);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="7"][event_type="del"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox65 = await page.$(
-  'input[type="checkbox"][module_id_domain="7"][event_type="print"]'
-);
-if (checkbox65) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox65) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox65.hasAttribute("disabled");
-  }, checkbox65);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="7"][event_type="print"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox66 = await page.$(
-  'input[type="checkbox"][module_id_domain="7"][event_type="reject"]'
-);
-if (checkbox66) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox66) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox66.hasAttribute("disabled");
-  }, checkbox66);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="7"][event_type="reject"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
+    /////////////////////////////////////////////////////////
+    const checkbox61 = await page.$(
+      'input[type="checkbox"][module_id_domain="7"][event_type="read"]'
+    );
+    if (checkbox61) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox61) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox61.hasAttribute("disabled");
+      }, checkbox61);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="7"][event_type="read"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox62 = await page.$(
+      'input[type="checkbox"][module_id_domain="7"][event_type="new"]'
+    );
+    if (checkbox62) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox62) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox62.hasAttribute("disabled");
+      }, checkbox62);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="7"][event_type="new"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox63 = await page.$(
+      'input[type="checkbox"][module_id_domain="7"][event_type="edit"]'
+    );
+    if (checkbox63) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox63) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox63.hasAttribute("disabled");
+      }, checkbox63);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="7"][event_type="edit"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox64 = await page.$(
+      'input[type="checkbox"][module_id_domain="7"][event_type="del"]'
+    );
+    if (checkbox64) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox64) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox64.hasAttribute("disabled");
+      }, checkbox64);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="7"][event_type="del"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox65 = await page.$(
+      'input[type="checkbox"][module_id_domain="7"][event_type="print"]'
+    );
+    if (checkbox65) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox65) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox65.hasAttribute("disabled");
+      }, checkbox65);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="7"][event_type="print"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox66 = await page.$(
+      'input[type="checkbox"][module_id_domain="7"][event_type="reject"]'
+    );
+    if (checkbox66) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox66) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox66.hasAttribute("disabled");
+      }, checkbox66);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="7"][event_type="reject"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
 
-/////////////////////////////////////////////////////////
-const checkbox71 = await page.$(
-  'input[type="checkbox"][module_id_domain="9"][event_type="read"]'
-);
-if (checkbox71) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox71) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox71.hasAttribute("disabled");
-  }, checkbox71);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="9"][event_type="read"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox72 = await page.$(
-  'input[type="checkbox"][module_id_domain="9"][event_type="new"]'
-);
-if (checkbox72) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox72) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox72.hasAttribute("disabled");
-  }, checkbox72);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="9"][event_type="new"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox73 = await page.$(
-  'input[type="checkbox"][module_id_domain="9"][event_type="edit"]'
-);
-if (checkbox73) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox73) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox73.hasAttribute("disabled");
-  }, checkbox73);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="9"][event_type="edit"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox74 = await page.$(
-  'input[type="checkbox"][module_id_domain="9"][event_type="del"]'
-);
-if (checkbox74) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox74) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox74.hasAttribute("disabled");
-  }, checkbox74);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="9"][event_type="del"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox75 = await page.$(
-  'input[type="checkbox"][module_id_domain="9"][event_type="print"]'
-);
-if (checkbox75) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox75) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox75.hasAttribute("disabled");
-  }, checkbox75);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="9"][event_type="print"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox76 = await page.$(
-  'input[type="checkbox"][module_id_domain="9"][event_type="reject"]'
-);
-if (checkbox76) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox76) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox76.hasAttribute("disabled");
-  }, checkbox76);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="9"][event_type="reject"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
+    /////////////////////////////////////////////////////////
+    const checkbox71 = await page.$(
+      'input[type="checkbox"][module_id_domain="9"][event_type="read"]'
+    );
+    if (checkbox71) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox71) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox71.hasAttribute("disabled");
+      }, checkbox71);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="9"][event_type="read"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox72 = await page.$(
+      'input[type="checkbox"][module_id_domain="9"][event_type="new"]'
+    );
+    if (checkbox72) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox72) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox72.hasAttribute("disabled");
+      }, checkbox72);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="9"][event_type="new"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox73 = await page.$(
+      'input[type="checkbox"][module_id_domain="9"][event_type="edit"]'
+    );
+    if (checkbox73) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox73) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox73.hasAttribute("disabled");
+      }, checkbox73);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="9"][event_type="edit"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox74 = await page.$(
+      'input[type="checkbox"][module_id_domain="9"][event_type="del"]'
+    );
+    if (checkbox74) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox74) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox74.hasAttribute("disabled");
+      }, checkbox74);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="9"][event_type="del"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox75 = await page.$(
+      'input[type="checkbox"][module_id_domain="9"][event_type="print"]'
+    );
+    if (checkbox75) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox75) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox75.hasAttribute("disabled");
+      }, checkbox75);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="9"][event_type="print"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox76 = await page.$(
+      'input[type="checkbox"][module_id_domain="9"][event_type="reject"]'
+    );
+    if (checkbox76) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox76) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox76.hasAttribute("disabled");
+      }, checkbox76);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="9"][event_type="reject"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
 
-
-
-/////////////////////////////////////////////////////////
-const checkbox81 = await page.$(
-  'input[type="checkbox"][module_id_domain="10"][event_type="read"]'
-);
-if (checkbox81) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox81) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox81.hasAttribute("disabled");
-  }, checkbox81);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="10"][event_type="read"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox82 = await page.$(
-  'input[type="checkbox"][module_id_domain="10"][event_type="new"]'
-);
-if (checkbox82) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox82) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox82.hasAttribute("disabled");
-  }, checkbox82);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="10"][event_type="new"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox83 = await page.$(
-  'input[type="checkbox"][module_id_domain="10"][event_type="edit"]'
-);
-if (checkbox83) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox83) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox83.hasAttribute("disabled");
-  }, checkbox83);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="10"][event_type="edit"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox84 = await page.$(
-  'input[type="checkbox"][module_id_domain="10"][event_type="del"]'
-);
-if (checkbox84) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox84) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox84.hasAttribute("disabled");
-  }, checkbox84);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="10"][event_type="del"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox85 = await page.$(
-  'input[type="checkbox"][module_id_domain="10"][event_type="print"]'
-);
-if (checkbox85) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox85) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox85.hasAttribute("disabled");
-  }, checkbox85);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="10"][event_type="print"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-}
-const checkbox86 = await page.$(
-  'input[type="checkbox"][module_id_domain="10"][event_type="reject"]'
-);
-if (checkbox86) {
-  // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
-  const isDisabled = await page.evaluate((checkbox86) => {
-    // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
-    return checkbox86.hasAttribute("disabled");
-  }, checkbox86);
-  if (!isDisabled) {
-    await page
-      .locator(
-        'input[type="checkbox"][module_id_domain="10"][event_type="reject"]'
-      )
-      .check();
-    await page.waitForLoadState();
-  }
-
- 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /////////////////////////////////////////////////////////
+    const checkbox81 = await page.$(
+      'input[type="checkbox"][module_id_domain="10"][event_type="read"]'
+    );
+    if (checkbox81) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox81) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox81.hasAttribute("disabled");
+      }, checkbox81);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="10"][event_type="read"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox82 = await page.$(
+      'input[type="checkbox"][module_id_domain="10"][event_type="new"]'
+    );
+    if (checkbox82) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox82) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox82.hasAttribute("disabled");
+      }, checkbox82);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="10"][event_type="new"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox83 = await page.$(
+      'input[type="checkbox"][module_id_domain="10"][event_type="edit"]'
+    );
+    if (checkbox83) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox83) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox83.hasAttribute("disabled");
+      }, checkbox83);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="10"][event_type="edit"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox84 = await page.$(
+      'input[type="checkbox"][module_id_domain="10"][event_type="del"]'
+    );
+    if (checkbox84) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox84) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox84.hasAttribute("disabled");
+      }, checkbox84);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="10"][event_type="del"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox85 = await page.$(
+      'input[type="checkbox"][module_id_domain="10"][event_type="print"]'
+    );
+    if (checkbox85) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox85) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox85.hasAttribute("disabled");
+      }, checkbox85);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="10"][event_type="print"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
+    const checkbox86 = await page.$(
+      'input[type="checkbox"][module_id_domain="10"][event_type="reject"]'
+    );
+    if (checkbox86) {
+      // ตรวจสอบว่า checkbox ถูก disable หรือไม่โดยใช้ JavaScript ใน context ของเบราว์เซอร์
+      const isDisabled = await page.evaluate((checkbox86) => {
+        // ตรวจสอบว่ามี attribute 'disabled' หรือไม่
+        return checkbox86.hasAttribute("disabled");
+      }, checkbox86);
+      if (!isDisabled) {
+        await page
+          .locator(
+            'input[type="checkbox"][module_id_domain="10"][event_type="reject"]'
+          )
+          .check();
+        await page.waitForLoadState();
+      }
+    }
   });
-
- 
 });

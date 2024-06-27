@@ -8,19 +8,19 @@ const dataLogin = dataSetting.Login;
 test("Setup Permission Report", async ({ page }) => {
   await page.goto(dataLogin.site);
   const loginPage = new LoginPage(page);
-  await loginPage.goto(dataLogin.site);
-  await loginPage.login(dataLogin.username, dataLogin.password);
+  await loginPage.goto(process.env.BASE_URL!);
+  await loginPage.login(process.env.USERNAME_LOGIN!, process.env.PASSWORD_LOGIN!);
   await page.waitForTimeout(3000);
-  await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
+  await page.locator(`[class="panel-title"]`).nth(0).click()
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click({ force: true });
   // await page.getByRole("link", { name: " Setup Permission" }).click({ force: true });
-  await page.locator("#ascrail2000 div").click({ force: true });
+  await page.click(`[id="d_77"]`)
   await page.mouse.wheel(0, 500);
   await page
     .getByRole("link", { name: "Setup Permission" })
     .click({ force: true });
   await page.waitForLoadState();
-  await page.locator('a.button.btn.btn-default.btn-block.btn-float.btn-float-lg').click()
+  await page.locator('a.button.btn.btn-default.btn-block.btn-float.btn-float-lg').nth(3).click()
   //await page.getByRole("link", { name: " Report" }).click({ force: true });
   await page.getByRole("link", { name: "Role Member Permission" }).click({ force: true });
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click({ force: true });
@@ -48,7 +48,7 @@ test("Setup Permission Report", async ({ page }) => {
   // await page.locator("#ic_chk609").check();
   // แสดงค่า id ที่ได้
   console.log("id", idValue);
-  await page.locator(`#${idValue}`).check();
+  await page.locator(`${idValue}`).check();
 
   await page.getByRole("button", { name: " Close" }).click();
 });

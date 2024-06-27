@@ -13,7 +13,7 @@ test("Setup Model Type", async ({ page }) => {
   await loginPage.goto(dataLogin.site);
   await loginPage.login(dataLogin.username, dataLogin.password);
   await page.waitForTimeout(3000);
-  await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
+  await page.locator(`[class="panel-title"]`).nth(0).click()
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
   await page.getByRole("link", { name: " Setup Block / Floor" }).click();
   await page.getByPlaceholder("Type to filter...").click();

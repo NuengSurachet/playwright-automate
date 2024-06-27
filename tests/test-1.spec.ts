@@ -1,22 +1,14 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "@playwright/test";  
+import dataSetting from "../data/common/TestSetting.json";
+import { LoginPage } from "../src/pages/common/login-page";
+
+const data = dataSetting.Login;
 
 test("Setup Permission Report", async ({ page }) => {
-  //fullScreenMode(page);
-  test.setTimeout(600000);
-  await page.goto("https://www.google.com/");
-
-  const idValue = await page
-    .locator(`[class="lnXdpd"]`)
-
-    .getAttribute("alt");
-
-  // แสดงค่า id ที่ได้
-  console.log(idValue);
-  await page.locator(`[class="gLFyf"]`).fill(idValue || "asd");
-  await page.getByLabel("ค้นหาด้วย Google").first().click();
-  await page.getByRole("link", { name: "รูปภาพ" }).click();
-  const id = await page.locator(`[class="YQ4gaf"]`).nth(2).getAttribute("id");
-  console.log(id);
-
-  // await page.getByRole("button", { name: " Close" }).click();
+    await page.pause();
+    const loginPage = new LoginPage(page);
+    await loginPage.goto(data.site);
+    await loginPage.login(data.username, data.password);
+    await page
+    
 });

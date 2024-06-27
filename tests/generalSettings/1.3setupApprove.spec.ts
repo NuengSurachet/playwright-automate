@@ -17,18 +17,10 @@ test.describe("Setup Approve", () => {
   });
 
   test("Test Setup Approve BOM", async () => {
-    // //test.setTimeout(6000);
-    await page.pause();
-    await page.getByPlaceholder("Username").click({ force: true });
-    await page.getByPlaceholder("Username").fill(data.username, { force: true });
-    await page.getByPlaceholder("Password").click({ force: true });
-    await page.getByPlaceholder("Password").fill(data.password, { force: true });
-    await page.getByPlaceholder("Password").press("Enter");
-    await page.waitForSelector(".thumbnail");
-    await page.locator(".thumbnail").first().click({ force: true });
-    await page.locator(".caption-overflow > span").click({ force: true });
-    await expect(page).not.toHaveURL(data.site+"auth/companylist");
-    await page.waitForLoadState();
+    // //test.setTimeout(6000); 
+    const loginPage = new LoginPage(page);
+    await loginPage.goto(data.site);
+    await loginPage.login(data.username, data.password);
     await page
       .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
       .click({ force: true });
@@ -54,7 +46,7 @@ test.describe("Setup Approve", () => {
     //Save Group
     await page.getByText("Add Group").click({ force: true });
     await page.locator("#groupname").click({ force: true });
-    await page.locator("#groupname").fill(setGroupData.groupName);
+    await page.locator("#groupname").fill(data.username);
     await page.locator("#remark").click({ force: true });
     await page.locator("#remark").fill("for test iot", { force: true });
     await page.locator("#department").selectOption(setGroupData.department);
@@ -64,7 +56,7 @@ test.describe("Setup Approve", () => {
 await page.locator('a').filter({ hasText: 'BOM' }).click();
 
 await page.getByLabel('Filter:').click();
-await page.getByLabel('Filter:').fill(setGroupData.groupName);
+await page.getByLabel('Filter:').fill(data.username);
 await page.getByLabel('Filter:').press('Enter');
 
 
@@ -116,7 +108,7 @@ const Datanotfound = await page.evaluate(() => {
     await page.locator("a").filter({ hasText: "BOQ" }).click({ force: true });
     // await page.getByRole("heading", { name: "BOQ ON / OFF" }).click({ force: true });
     await page.getByLabel("Filter:").click({ force: true });
-    await page.getByLabel("Filter:").fill(setGroupData.groupName);
+    await page.getByLabel("Filter:").fill(data.username);
     await page.getByLabel("Filter:").press("Enter");
     // // Use evaluate to get the text content of the element
     // const Datanotfound = await page.evaluate(() => {
@@ -129,7 +121,7 @@ const Datanotfound = await page.evaluate(() => {
       
     await page.getByText("Add Group").click({ force: true });
     await page.locator("#groupname").click({ force: true });
-    await page.locator("#groupname").fill(setGroupData.groupName);
+    await page.locator("#groupname").fill(data.username);
     await page.locator("#remark").click({ force: true });
     await page.locator("#remark").fill(setGroupData.remark);
     await page.locator("#department").selectOption(setGroupData.department);
@@ -141,7 +133,7 @@ await page.click(`[onclick="choose('1')"]`)
     // await page.locator("a").filter({ hasText: "BOQ (1)" }).click({ force: true });
     await page.getByLabel("Filter:").click({ force: true });
     await page.getByLabel("Filter:").click({ force: true });
-    await page.getByLabel("Filter:").fill(setGroupData.groupName);
+    await page.getByLabel("Filter:").fill(data.username);
     await page.getByLabel("Filter:").press("Enter");
     await page
       .getByRole("gridcell", { name: "      " })
@@ -196,7 +188,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -206,7 +198,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Cost Control (2)' }).click();
       //await page.locator('a').filter({ hasText: 'Cost Control (2)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -249,7 +241,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -260,7 +252,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Adjust Budget (22)' }).click();
       //await page.locator('a').filter({ hasText: 'Adjust Budget (22)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -302,7 +294,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -313,7 +305,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Purchase Requisition (3)' }).click();
       //await page.locator('a').filter({ hasText: 'Purchase Requisition (3)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -356,7 +348,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -367,7 +359,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Purchase Requisition Decrement (4)' }).click();
       //await page.locator('a').filter({ hasText: 'Purchase Requisition Decrement (4)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -410,7 +402,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -421,7 +413,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Purchase Order (5)' }).click();
       //await page.locator('a').filter({ hasText: 'Purchase Order (5)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -464,7 +456,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -475,7 +467,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Purchase Order Advance' }).click();
       //await page.locator('a').filter({ hasText: 'Purchase Order Advance' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -518,7 +510,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -529,7 +521,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Purchase Order Decrement (7)' }).click();
       //await page.locator('a').filter({ hasText: 'Purchase Order Decrement (7)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -572,7 +564,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -583,7 +575,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Work Order (8)' }).click();
       //await page.locator('a').filter({ hasText: 'Work Order (8)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -626,7 +618,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -637,7 +629,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Work Order Decrement (23)' }).click();
       //await page.locator('a').filter({ hasText: 'Work Order Decrement (23)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -682,7 +674,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -693,7 +685,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Progress Subcontrator (9)' }).click();
       // await page.locator('a').filter({ hasText: 'Progress Subcontrator (9)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -736,7 +728,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -746,7 +738,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Contract Close (11)' }).click();
       // await page.locator('a').filter({ hasText: 'Contract Close (11)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -789,7 +781,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -799,7 +791,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Petty Cash (13)' }).click();
       //await page.locator('a').filter({ hasText: 'Petty Cash (13)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -842,7 +834,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -853,7 +845,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.locator('a').filter({ hasText: 'Purchase Order Receive (15)' }).click();
       //await page.locator('a').filter({ hasText: 'Purchase Order Receive (15)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -897,7 +889,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -908,7 +900,7 @@ await page.click(`[onclick="choose('1')"]`)
       await page.getByText('Debit Note / Credit Note (18)').click();
       //await page.locator('a').filter({ hasText: 'Debit Note / Credit Note (18)' }).click({ force: true });
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 
@@ -951,7 +943,7 @@ await page.click(`[onclick="choose('1')"]`)
       //Save group
       await page.getByText("Add Group").click({ force: true });
       await page.locator("#groupname").click({ force: true });
-      await page.locator("#groupname").fill(setGroupData.groupName);
+      await page.locator("#groupname").fill(data.username);
       await page.locator("#remark").click({force:true});
       await page.locator("#remark").fill(setGroupData.remark);
       await page.locator("#department").selectOption(setGroupData.department);
@@ -960,7 +952,7 @@ await page.click(`[onclick="choose('1')"]`)
 
       await page.getByText('Issue (20)').click();
       await page.getByLabel('Filter:').click({ force: true });
-      await page.getByLabel('Filter:').fill(setGroupData.groupName);
+      await page.getByLabel('Filter:').fill(data.username);
       await page.getByLabel('Filter:').press('Enter');
       await page.getByRole('gridcell', { name: '      ' }).locator('a').first().click({ force: true });
 

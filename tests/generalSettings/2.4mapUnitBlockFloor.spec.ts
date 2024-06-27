@@ -12,7 +12,7 @@ test.describe("Genaral Settings", async () => {
     const loginPage = new LoginPage(page);
     await loginPage.goto(dataLogin.site);
     await loginPage.login(dataLogin.username, dataLogin.password);
-    await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
+    await page.locator(`[class="panel-title"]`).nth(0).click()
     await page.waitForLoadState();
     await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
     await page.getByRole("link", { name: " Setup Project Unit" }).click();
