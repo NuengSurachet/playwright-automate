@@ -38,7 +38,7 @@ export class LoginPage {
     await this.page
       .getByRole("button", { name: "Login" })
       .click({ force: true });
-    let retries = 5;
+    let retries = 115;
     let attempt = 0;
     let delay = 1000;
     while (attempt < retries) {

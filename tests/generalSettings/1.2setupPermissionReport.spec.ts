@@ -10,7 +10,7 @@ test("Setup Permission Report", async ({ page }) => {
   await page.goto(dataLogin.site);
   const loginPage = new LoginPage(page);
   await loginPage.goto(dataLogin.site);
-  await loginPage.login(dataLogin.username, dataLogin.password, 0);
+  await loginPage.login(dataLogin.username, dataLogin.password, 12);
   await page.locator(`[class="panel-title"]`).nth(0).click();
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
   // await page.getByRole("link", { name: " Setup Permission" }).click();
@@ -36,8 +36,6 @@ test("Setup Permission Report", async ({ page }) => {
   await page.getByPlaceholder("Type to filter...").click();
   await page.getByPlaceholder("Type to filter...").fill(data.username);
   await page.click(`(//i[@class='icon-user-check'])[1]`);
-
   await page.locator(`[type="checkbox"][data-readonly]`).nth(0).check();
-
-  await page.locator(`[class="modal-content" class=" btn bg-danger"]`).nth(1).click();
+  await page.getByRole("button", { name: "X" }).click();
 });

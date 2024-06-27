@@ -10,34 +10,34 @@ const data = dataSetting.Login;
 
 test.describe("Setup Project", () => {
   test("Test Setup Project", async ({ page }) => {
-   // test.setTimeout(6000);
+    // test.setTimeout(6000);
     //fullScreenMode(page)
 
     await page.pause();
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
-    await loginPage.login(data.username, data.password,0);
+    await loginPage.login(data.username, data.password, 12);
 
-    await page.locator(`[class="panel-title"]`).nth(0).click()
+    await page.locator(`[class="panel-title"]`).nth(0).click();
     await expect(page).not.toHaveURL(data.site + "panel/office");
     await page.waitForLoadState();
     await page.locator("#btn_mg").click({ force: true });
     await page.waitForLoadState();
     // const setupProject = SetupProjects[0];
-    for (const setupProject of SetupProjects) 
-    {
+    for (const setupProject of SetupProjects) {
       await page
-       .getByRole("link", { name: "Setup Project & Department" })
-         .click({ force: true });
+        .getByRole("link", { name: "Setup Project & Department" })
+        .click({ force: true });
 
-          await page.click(`[type="button"]`)
-    
+      await page.click(`[type="button"]`);
 
       await page.getByLabel("Project").check();
       await page.getByPlaceholder("Code").click({ force: true });
       await page.getByPlaceholder("Code").fill(setupProject.Code);
       await page.locator("#startproject").fill(setupProject.StartDate);
-      await page.getByPlaceholder("Name", { exact: true }).click({ force: true });
+      await page
+        .getByPlaceholder("Name", { exact: true })
+        .click({ force: true });
       await page
         .getByPlaceholder("Name", { exact: true })
         .fill(setupProject.Name);
@@ -53,7 +53,10 @@ test.describe("Setup Project", () => {
 
       if (setupProject.Status === "Active")
         await page.getByLabel("Active", { exact: true }).check({ force: true });
-      else await page.getByLabel("Inactive", { exact: true }).check({ force: true });
+      else
+        await page
+          .getByLabel("Inactive", { exact: true })
+          .check({ force: true });
 
       await page.getByLabel("Not Control").check({ force: true });
       if (setupProject.LockProjectDate === "true")
@@ -75,53 +78,44 @@ test.describe("Setup Project", () => {
       await page.locator("#ProjectWebsite").fill(setupProject.Websit);
 
       for (const admin of Admin) {
-      await page.getByRole("link", { name: "Admin" }).click();
-      await page.getByRole("button", { name: " เพิ่มผู้ดูแล" }).click();
-      await page.locator('input[name="adminname2\\[\\]"]').click();
-      await page.locator('input[name="adminname2\\[\\]"]').fill(admin.Name);
-      await page.locator('input[name="adminposi2\\[\\]"]').click();
-      await page
-        .locator('input[name="adminposi2\\[\\]"]')
-        .fill(admin.Position);
-      await page.locator('input[name="admintel2\\[\\]"]').click();
-      await page
-        .locator('input[name="admintel2\\[\\]"]')
-        .fill(admin.Telephone);
-      await page.locator('input[name="adminemail2\\[\\]"]').click();
-      await page
-        .locator('input[name="adminemail2\\[\\]"]')
-        .fill(admin.Email);
-      await page.locator('input[name="adminemail2\\[\\]"]').press("Tab");
-      await page.getByRole("link", { name: "Consultants" }).click();
-    } 
+        await page.getByRole("link", { name: "Admin" }).click();
+        await page.getByRole("button", { name: " เพิ่มผู้ดูแล" }).click();
+        await page.locator('input[name="adminname2\\[\\]"]').click();
+        await page.locator('input[name="adminname2\\[\\]"]').fill(admin.Name);
+        await page.locator('input[name="adminposi2\\[\\]"]').click();
+        await page
+          .locator('input[name="adminposi2\\[\\]"]')
+          .fill(admin.Position);
+        await page.locator('input[name="admintel2\\[\\]"]').click();
+        await page
+          .locator('input[name="admintel2\\[\\]"]')
+          .fill(admin.Telephone);
+        await page.locator('input[name="adminemail2\\[\\]"]').click();
+        await page.locator('input[name="adminemail2\\[\\]"]').fill(admin.Email);
+        await page.locator('input[name="adminemail2\\[\\]"]').press("Tab");
+        await page.getByRole("link", { name: "Consultants" }).click();
+      }
 
-
-    for (const cons of Consultants) {
-      await page
-        .getByRole("button", { name: " เพิ่มผู้ติดต่อโครงการ" })
-        .click();
-      await page.locator('input[name="contactname\\[\\]"]').click();
-      await page
-        .locator('input[name="contactname\\[\\]"]')
-        .fill(cons.Name);
-      await page.locator('input[name="contactposi\\[\\]"]').click();
-      await page
-        .locator('input[name="contactposi\\[\\]"]')
-        .fill(cons.Position);
-      await page.locator('input[name="contacttel\\[\\]"]').click();
-      await page
-        .locator('input[name="contacttel\\[\\]"]')
-        .fill(cons.Telephone);
-      await page.locator('input[name="contactemail\\[\\]"]').click();
-      await page
-        .locator('input[name="contactemail\\[\\]"]')
-        .fill(cons.Email);
-      
-    }
+      for (const cons of Consultants) {
+        await page
+          .getByRole("button", { name: " เพิ่มผู้ติดต่อโครงการ" })
+          .click();
+        await page.locator('input[name="contactname\\[\\]"]').click();
+        await page.locator('input[name="contactname\\[\\]"]').fill(cons.Name);
+        await page.locator('input[name="contactposi\\[\\]"]').click();
+        await page
+          .locator('input[name="contactposi\\[\\]"]')
+          .fill(cons.Position);
+        await page.locator('input[name="contacttel\\[\\]"]').click();
+        await page
+          .locator('input[name="contacttel\\[\\]"]')
+          .fill(cons.Telephone);
+        await page.locator('input[name="contactemail\\[\\]"]').click();
+        await page.locator('input[name="contactemail\\[\\]"]').fill(cons.Email);
+      }
       await page.getByRole("button", { name: " Save" }).click();
-      await page.getByRole('heading', { name: 'Update Complete' }).click();
-      await page.getByRole('button', { name: 'OK' }).click();
+      await page.getByRole("heading", { name: "Update Complete" }).click();
+      await page.getByRole("button", { name: "OK" }).click();
     }
-    
   });
 });
