@@ -16,7 +16,7 @@ test.describe("Setup Project", () => {
     await page.pause();
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
-    await loginPage.login(data.username, data.password);
+    await loginPage.login(data.username, data.password,0);
 
     await page.locator(`[class="panel-title"]`).nth(0).click()
     await expect(page).not.toHaveURL(data.site + "panel/office");
@@ -30,7 +30,7 @@ test.describe("Setup Project", () => {
        .getByRole("link", { name: "Setup Project & Department" })
          .click({ force: true });
 
-         await page.getByRole('link', { name: ' New' }).click();
+          await page.click(`[type="button"]`)
     
 
       await page.getByLabel("Project").check();

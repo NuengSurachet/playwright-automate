@@ -12,9 +12,7 @@ test.describe("Setup Position", async () => {
         const loginPage = new LoginPage(page);
         await loginPage.goto(dataLogin.site);
         await loginPage.login(dataLogin.username, dataLogin.password, 12);
-        await page
-          .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
-          .click();
+       await page.locator(`[class="panel-title"]`).nth(0).click()
         await page.waitForLoadState();
         await page.locator('a').filter({ hasText: 'Genaral Settings' }).click();
         await page.getByRole('link', { name: ' Setup Permission' }).click();
@@ -28,7 +26,9 @@ test.describe("Setup Position", async () => {
         const page1Promise = page.waitForEvent('popup');
         await page.getByTitle('Company').click();
         const page1 = await page1Promise;
-        await page1.getByRole('button', { name: 'Project' }).nth(1).click();
+        await page1.getByLabel('11 ****_test_server').check();
+        await page1.getByRole('button', { name: 'Project' }).click();
+
         for (const projectName of data.ProjectListName) {
             await page1.getByLabel(projectName).click();
         }
