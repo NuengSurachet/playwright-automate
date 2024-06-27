@@ -13,7 +13,7 @@ test.describe("Setup Position", async () => {
         await page.goto(dataLogin.site);
         const loginPage = new LoginPage(page);
         await loginPage.goto(dataLogin.site);
-        await loginPage.login(dataLogin.username, dataLogin.password);
+        await loginPage.login(dataLogin.username, dataLogin.password, 12);
         await page.waitForLoadState();
         await page
           .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })

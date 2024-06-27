@@ -3,8 +3,7 @@ import { LoginPage } from "../../src/pages/common/login-page";
 import { describe } from "node:test";
 import dataSetting from "../../data/common/TestSetting.json";
 
-const data = dataSetting.Login;
-const dataLogin = dataSetting.Login;
+const data = dataSetting.Login; 
 const deleteRow = async (page) => {
   await page.locator("#delete110300001MM1").click();
   await page.getByRole("button", { name: "Ok" }).click();
@@ -12,21 +11,19 @@ const deleteRow = async (page) => {
 
 describe("ระบบจัดการในสำนักงาน", () => {
   test("New PR", async ({ page }) => {
-    await page.goto(dataLogin.site);
+    await page.pause();
     const loginPage = new LoginPage(page);
-    await loginPage.goto(dataLogin.site);
-    await loginPage.login(dataLogin.username, dataLogin.password);
-    await page.waitForTimeout(3000); 
-    await page
-      .getByRole("link", { name: "ระบบจัดการในสำนักงาน" })
-      .click({ force: true });
+    await loginPage.goto(data.site);
+    await loginPage.login(data.username, data.password,0);
+
+    await page.locator(`[class="panel-title"]`).nth(2).click() 
     await page.getByRole("link", { name: " New PR" }).click();
 
     const select = await page.locator("(//select[@id='pr_type'])[1]");
     await page.waitForTimeout(1500);
     await select.selectOption({ label: "Expense" });
     await page.waitForTimeout(1500);
-    await page.locator("#group-PR").selectOption("V00006");
+    await page.locator("#group-PR").selectOption({index: 1});
     page.once("dialog", (dialog) => {
       console.log(`Dialog message: ${dialog.message()}`);
       dialog.dismiss().catch(() => {});
@@ -42,7 +39,7 @@ describe("ระบบจัดการในสำนักงาน", () => {
     await page.getByPlaceholder("หมายเหตุ").click({ force: true });
 
     await page.locator("#apduedate").fill("2024-06-23", { force: true });
-    await page.locator("#sendapprove").selectOption("60");
+    await page.locator("#sendapprove").selectOption({index: 1});
     // -----
     await page.waitForLoadState("load");
     await page.locator("#sss").click();

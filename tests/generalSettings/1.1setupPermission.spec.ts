@@ -5,15 +5,13 @@ const data = dataSetting.Login;
 
 test.describe("Setup Permission", () => {
   test("Test Setup Permission by user", async ({ page }) => {
-    // test.setTimeout(6000);
+    test.setTimeout(6000);
     await page.pause();
 
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
-    await loginPage.login(data.username, data.password);
-    await page
-      .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
-      .click({ force: true });
+    await loginPage.login(data.username, data.password,0);
+    await page.locator(`[class="panel-title"]`).nth(0).click()
     await expect(page).not.toHaveURL(data.site + "panel/office");
     await page.waitForLoadState();
     await page.locator("#btn_mg").click({ force: true });

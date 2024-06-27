@@ -13,9 +13,9 @@ test("setup ProjectType", async ({ page }) => {
 console.log(getSharedProjectType('ProjectCode'))
   const loginPage = new LoginPage(page);
   await loginPage.goto(data.site);
-  await loginPage.login(data.username, data.password);
+  await loginPage.login(data.username, data.password,1);
   // await page.goto(data.site + "/auth/login/" + data.username + "");
-  await page.getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" }).click();
+  await page.locator(`[class="panel-title"]`).nth(0).click()
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();
   await page.getByRole("link", { name: " Setup Project Type" }).click();
   await page.getByRole("button", { name: " New" }).click();

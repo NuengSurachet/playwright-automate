@@ -24,9 +24,7 @@ test.describe("Setup Business Partner", () => {
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
     await loginPage.login(data.username, data.password);
-    await page
-      .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
-      .click({ force: true });
+    await page.locator(`[class="panel-title"]`).nth(0).click()
     await expect(page).not.toHaveURL(data.site + "panel/office");
     await page.waitForLoadState();
     await page.locator('a').filter({ hasText: 'Business Partner' }).first().click();
@@ -64,9 +62,7 @@ test.describe("Setup Business Partner", () => {
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
     await loginPage.login(data.username, data.password);
-    await page
-      .getByRole("link", { name: "ระบบจัดการข้อมูลกลาง" })
-      .click({ force: true });
+    await page.locator(`[class="panel-title"]`).nth(0).click()
     await expect(page).not.toHaveURL(data.site + "panel/office");
     await page.waitForLoadState();
     await page.locator('a').filter({ hasText: 'Business Partner' }).first().click();

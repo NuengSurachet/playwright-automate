@@ -23,7 +23,11 @@ export class LoginPage {
   }
 
   // สร้างเมทอด login() เพื่อทำการ login ด้วยชื่อผู้ใช้และรหัสผ่านที่รับเข้ามาเป็นพารามิเตอร์
-  async login(username: string, password: string): Promise<void> {
+  async login(
+    username: string,
+    password: string,
+    index?: number
+  ): Promise<void> {
     // ใช้ fill() เพื่อกรอกชื่อผู้ใช้และรหัสผ่านใน input fields และ click() เพื่อกดปุ่มเข้าสู่ระบบ
     await this.page.fill(this.usernameInput, username, { force: true });
     debugger;
@@ -34,31 +38,35 @@ export class LoginPage {
     await this.page
       .getByRole("button", { name: "Login" })
       .click({ force: true });
-      let retries =  5;
-      let attempt = 0;
-      let delay = 1000;
-      while (attempt < retries) {
-        try {
-          const img = await this.page.locator('div[class="col-lg-3"]');
-          const icon = await this.page.locator('//i[@class="glyphicon glyphicon-log-in"]');
-          await img.hover();
-          await icon.click({ force: true });
-          // If no error, break out of the loop
-          break;
-        } catch (error) {
-          console.error(`Attempt ${attempt + 1} failed: ${error.message}`);
-          attempt++;
-          if (attempt < retries) {
-            // Wait for a specified delay before retrying
-            await new Promise(resolve => setTimeout(resolve, delay));
-            // Ensure the page is in a loaded state before retrying
-            await this.page.waitForLoadState();
-          } else {
-            console.error('All attempts failed.');
-            throw error;
-          }
+    let retries = 115;
+    let attempt = 0;
+    let delay = 1000;
+    while (attempt < retries) {
+      try {
+        const img = await this.page
+          .locator('div[class="col-lg-3"]')
+          .nth(index!);
+        const icon = await this.page
+          .locator('//i[@class="glyphicon glyphicon-log-in"]')
+          .nth(index!);
+        await img.hover();
+        await icon.click({ force: true });
+        // If no error, break out of the loop
+        break;
+      } catch (error) {
+        console.error(`Attempt ${attempt + 1} failed: ${error.message}`);
+        attempt++;
+        if (attempt < retries) {
+          // Wait for a specified delay before retrying
+          await new Promise((resolve) => setTimeout(resolve, delay));
+          // Ensure the page is in a loaded state before retrying
+          await this.page.waitForLoadState();
+        } else {
+          console.error("All attempts failed.");
+          throw error;
         }
       }
+    }
   }
 
   async loginByUserType(userType: string): Promise<void> {
