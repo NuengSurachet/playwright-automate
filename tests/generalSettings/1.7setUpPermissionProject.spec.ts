@@ -11,7 +11,7 @@ test.describe("Setup Position", async () => {
         await page.goto(dataLogin.site);
         const loginPage = new LoginPage(page);
         await loginPage.goto(dataLogin.site);
-        await loginPage.login(dataLogin.username, dataLogin.password, 12);
+        await loginPage.login(dataLogin.username, dataLogin.password, 0);
        await page.locator(`[class="panel-title"]`).nth(0).click()
         await page.waitForLoadState();
         await page.locator('a').filter({ hasText: 'Genaral Settings' }).click();
@@ -26,15 +26,17 @@ test.describe("Setup Position", async () => {
         const page1Promise = page.waitForEvent('popup');
         await page.getByTitle('Company').click();
         const page1 = await page1Promise;
-        await page1.getByLabel('11 ****_test_server').check();
-        await page1.getByRole('button', { name: 'Project' }).click();
+        // await page1.getByLabel('11 ****_test_server').check();
+        await page1.getByRole('button', { name: 'Project' }).first().click();
+        await page1.getByLabel('CHECK ALL PROJECT').check();
+        // for (const projectName of data.ProjectListName) {
+        //     await page1.getByLabel(projectName).click();
+        // }
 
-        for (const projectName of data.ProjectListName) {
-            await page1.getByLabel(projectName).click();
-        }
-        await page1.getByRole('button', { name: 'Department' }).nth(1).click();
-        for (const companyName of data.DepartmentListName) {
-            await page1.getByLabel(companyName).click();
-        }
+        await page1.getByRole('button', { name: 'Department' }).first().click();
+        await page1.getByLabel('CHECK ALL DEPART').check();
+        // for (const companyName of data.DepartmentListName) {
+        //     await page1.getByLabel(companyName).click();
+        // }
     })
 })
