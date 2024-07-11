@@ -3,7 +3,7 @@ import { LoginPage } from "../../src/pages/common/login-page";
 import dataSetting from "../../data/common/TestSetting.json";
 import ProjectUnits from "../../data/generalSettings/setupProjectUnit"
 const data = dataSetting.Login;
-
+const dataLogin = dataSetting.Login;
 test.describe("Setup Project Unit", () => {
   test("Test Setup Project Unit", async ({ page }) => {
     //test.setTimeout(6000);
@@ -11,7 +11,7 @@ test.describe("Setup Project Unit", () => {
 
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
-    await loginPage.loginByUserType("ADMIN")
+    await loginPage.login(dataLogin.username, dataLogin.password, 2);
     //await loginPage.login(data.username, data.password);
     await page.locator(`[class="panel-title"]`).nth(0).click()
     await expect(page).not.toHaveURL(data.site + "panel/office");

@@ -33,7 +33,7 @@ test.describe("Setup Approve", () => {
     await setupUserApproveGroup(page);
     await page.waitForSelector(`[onclick="choose('10')"]`)
     await page.locator(`[onclick="choose('10')"]`).click();
-    await setupUserApprove(page);
+    await await setupUserApprove(page);
     currentUrl =  page.url();
   });
 
@@ -47,7 +47,7 @@ test.describe("Setup Approve", () => {
     await setupUserApproveGroup(page);
     await page.waitForTimeout(3000);
     await page.click(`[onclick="choose('1')"]`)
-    setupUserApprove(page);
+    await setupUserApprove(page);
    currentUrl=page.url();
   });
   
@@ -61,7 +61,7 @@ test.describe("Setup Approve", () => {
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('2')"]`).click();
       //await page.locator('a').filter({ hasText: 'Cost Control (2)' }).click({ force: true });  
-      setupUserApprove(page);
+      await setupUserApprove(page);
 
     /*
       await page.getByLabel('Filter:').click({ force: true });
@@ -98,7 +98,7 @@ test.describe("Setup Approve", () => {
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('22')"]`).click();
       //await page.locator('a').filter({ hasText: 'Cost Control (2)' }).click({ force: true });  
-      setupUserApprove(page);
+      await setupUserApprove(page);
   
   });
 
@@ -112,7 +112,7 @@ test.describe("Setup Approve", () => {
     await page.waitForTimeout(3000)
     await page.locator(`a[onclick="choose('3')"]`).click();
     //await page.locator('a').filter({ hasText: 'Cost Control (2)' }).click({ force: true });  
-    setupUserApprove(page);  
+    await setupUserApprove(page);  
   });
 
 
@@ -126,7 +126,7 @@ test.describe("Setup Approve", () => {
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('4')"]`).click();
       //await page.locator('a').filter({ hasText: 'Cost Control (2)' }).click({ force: true });  
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
 
   test("Test Setup Approve Purchase Order", async () => {
@@ -139,7 +139,7 @@ test.describe("Setup Approve", () => {
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('5')"]`).click();
       //await page.locator('a').filter({ hasText: 'Cost Control (2)' }).click({ force: true });  
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
 
   test("Test Setup Purchase Order Advance Deposit", async () => {
@@ -151,7 +151,7 @@ test.describe("Setup Approve", () => {
       await setupUserApproveGroup(page);
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('6')"]`).click();
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
 
   test("Test Setup Purchase Order Decrement", async () => {
@@ -163,7 +163,7 @@ test.describe("Setup Approve", () => {
       await setupUserApproveGroup(page);
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('7')"]`).click();
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
 
   test("Test Setup Work Order", async () => {
@@ -175,7 +175,7 @@ test.describe("Setup Approve", () => {
       await setupUserApproveGroup(page);
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('8')"]`).click();
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
 
   test("Work Order Decrement", async () => {
@@ -187,7 +187,7 @@ test.describe("Setup Approve", () => {
       await setupUserApproveGroup(page);
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('23')"]`).click();
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
   test("Progress Subcontrator", async () => {
     //test.setTimeout(6000);
@@ -198,7 +198,7 @@ test.describe("Setup Approve", () => {
       await setupUserApproveGroup(page);
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('9')"]`).click();
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
   test("Test Setup Contract Close", async () => {
     //test.setTimeout(6000);
@@ -209,7 +209,7 @@ test.describe("Setup Approve", () => {
       await setupUserApproveGroup(page);
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('11')"]`).click();
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
   test("Test Setup Petty Cash", async () => {
     //test.setTimeout(6000);
@@ -220,7 +220,7 @@ test.describe("Setup Approve", () => {
       await setupUserApproveGroup(page);
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('13')"]`).click();
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
   test("Test Setup Purchase Order Receive", async () => {
     //test.setTimeout(6000);
@@ -231,7 +231,7 @@ test.describe("Setup Approve", () => {
       await setupUserApproveGroup(page);
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('15')"]`).click();
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
   test("Test SetupDebit Note / Credit Note", async () => {
     //test.setTimeout(6000);
@@ -242,7 +242,7 @@ test.describe("Setup Approve", () => {
       await setupUserApproveGroup(page);
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('18')"]`).click();
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
   test("Test Setup Issue", async () => {
     //test.setTimeout(6000);
@@ -253,7 +253,7 @@ test.describe("Setup Approve", () => {
       await setupUserApproveGroup(page);
       await page.waitForTimeout(3000)
       await page.locator(`a[onclick="choose('20')"]`).click();
-      setupUserApprove(page);
+      await setupUserApprove(page);
   });
 
 });

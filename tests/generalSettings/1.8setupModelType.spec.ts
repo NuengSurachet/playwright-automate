@@ -13,7 +13,7 @@ test("Setup Model Type", async ({ page }) => {
 
   const loginPage = new LoginPage(page);
   await loginPage.goto(data.site);
-  await loginPage.login(data.username, data.password, 12);
+  await loginPage.login(data.username, data.password, 2);
   // await page.goto(data.site + "/auth/login/" + data.username + "/PPA");
   await page.locator(`[class="panel-title"]`).nth(0).click()
   await page.locator("a").filter({ hasText: "Genaral Settings" }).click();

@@ -10,7 +10,7 @@ test.describe("Setup Permission", () => {
 
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
-    await loginPage.login(data.username, data.password,0);
+    await loginPage.login(data.username, data.password,2);
     await page.locator(`[class="panel-title"]`).nth(0).click()
     await expect(page).not.toHaveURL(data.site + "panel/office");
     await page.waitForLoadState();
@@ -25,7 +25,7 @@ test.describe("Setup Permission", () => {
       .click({ force: true });
     await page.waitForLoadState();
 
-    await page
+    await page 
       .getByRole("link", { name: "Permission by User" })
       .click({ force: true });
     await page.getByPlaceholder("Type to filter...").click({ force: true });

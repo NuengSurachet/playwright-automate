@@ -13,7 +13,7 @@ test.describe("Setup Project", () => {
     await page.pause();
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
-    await loginPage.login(data.username, data.password);
+    await loginPage.login(data.username, data.password,2);
 
     await page.locator(`[class="panel-title"]`).nth(0).click()
     await expect(page).not.toHaveURL(data.site + "panel/office");

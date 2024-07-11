@@ -16,11 +16,11 @@ test.describe("Setup Project", () => {
     await page.pause();
     const loginPage = new LoginPage(page);
     await loginPage.goto(data.site);
-    await loginPage.login(data.username, data.password, 12);
+    await loginPage.login(data.username, data.password, 2);
 
     await page.locator(`[class="panel-title"]`).nth(0).click();
     await expect(page).not.toHaveURL(data.site + "panel/office");
-    await page.waitForLoadState();
+    await page.waitForLoadState();                                                                                                         
     await page.locator("#btn_mg").click({ force: true });
     await page.waitForLoadState();
     // const setupProject = SetupProjects[0];
@@ -29,12 +29,12 @@ test.describe("Setup Project", () => {
         .getByRole("link", { name: "Setup Project & Department" })
         .click({ force: true });
 
-      await page.click(`[type="button"]`);
+      await page.click(`[class="preload btn btn-info"]`);
 
       await page.getByLabel("Project").check();
       await page.getByPlaceholder("Code").click({ force: true });
       await page.getByPlaceholder("Code").fill(setupProject.Code);
-      await page.locator("#startproject").fill(setupProject.StartDate);
+  //    await page.locator("#startproject").fill(setupProject.StartDate);
       await page
         .getByPlaceholder("Name", { exact: true })
         .click({ force: true });

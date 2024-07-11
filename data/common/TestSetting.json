@@ -2,21 +2,21 @@
 
 {
     "Login": {
-        "site": "https://std-cm-test.iconcm.com/panel/office",
-        "username": "icon001",
+        "site": "https://CHQ-cm-test.iconframework.com/",
+        "username": "admin",
         "password": "123456"
     },
     "Users": {
         "ADMIN": {
-            "username": "NAN02",
+            "username": "admin",
             "password": "123456"
         },
         "DEV": {
-            "username": "NAN02",
+            "username": "admin",
             "password": "123456"
         },
         "TESTER": {
-            "username": "NAN02",
+            "username": "admin",
             "password": "123456"
         }
     },

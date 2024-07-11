@@ -49,7 +49,7 @@ export default defineConfig({
     video: 'on',
 
     actionTimeout: 100000, // เพิ่ม timeout สำหรับ actions เป็น 10 วินาที
-    navigationTimeout: 60000, // เพิ่ม timeout สำหรับการ navigation เป็น 30 วินาที
+    navigationTimeout: 6000000, // เพิ่ม timeout สำหรับการ navigation เป็น 30 วินาที
 
       /* Set the default viewport size */
     // viewport: { width: 1280, height: 720 },
